@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package inc.PrettyHateMachin.e.App;
 
 import org.junit.Test;
 
