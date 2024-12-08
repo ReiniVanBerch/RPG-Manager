@@ -1,12 +1,12 @@
-package inc.PrettyHateMachin.e.App;
+package inc.PrettyHateMachin.e.Common;
 
 //import org.json.*;
 
 /**
- * @author Vincent Berchtold
- * @version 0.1.2
+ * @author V. Berchtold
+ * @version 0.1.3
  *
- *
+ * PURPOSE:
  * The type is represented in hexadecimal, but is just 1 Byte.
  * We split the byte into two half-bytes where the ...
  * ... first represents the "type", typeInt, so whether its an type o integer, double, boolean, whatever
@@ -19,30 +19,19 @@ package inc.PrettyHateMachin.e.App;
  * as of 06.12.2024, day of the comeback
  *
  * 0# / Boolean
- * 00 - Boolean
- * 0* - ---left open for future---
- * 0F - Boolean Array
- *
  * 1# / Integer
- * 10 - Fixed Integer value
- * 11 - Changing Integer value
- * 12 - Integer Range
- * 13 - Integer Range with a current value
- * 1* - ---left open for future---
- * 1F - Integer Array
- *
  * 2# / Double
- * 20 - Fixed Double Value
- * 21 - Changing Double value
- * 22 - Double Range
- * 23 - Double Range with a current value
- * 2* - ---left open for future---
- * 2F - Integer Array
+ * F# / Strings
+ *
+ * #0 - Fixed Value
+ * #1 - Double value
+ * #2 - Range
+ * #3 - Range with a current value
+ * * - ---left open for future---
+ * #F - Lists
  *
  * 30-EF ---left open for future---
  *
- * F# / Strings
- * F0 - Text
  */
 
 
@@ -56,21 +45,40 @@ public class TypeHelper {
         int typeInt = typeNumber / 16;
         int qualityInt = typeNumber % 16;
 
+        Object obj;
 
+        switch (qualityInt){
+            case 0:
+                // one fixed value
+
+                break;
+
+            case 1:
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                break;
+
+            case 6:
+                break;
+
+        }
+
+
+
+        return new Object();
     }
 
     public static Object jsonResolver(String json){
-
-
-
-
         return null;
     }
-
-
-
-
-
-
-
 }
