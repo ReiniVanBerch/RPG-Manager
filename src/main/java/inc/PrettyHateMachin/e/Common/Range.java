@@ -3,7 +3,7 @@ package inc.PrettyHateMachin.e.Common;
 
 /**
  * @author V. Berchtold
- * @version 0.1.1
+ * @version 0.1.2
  *
  * PURPOSE:
  * The purpose of this is to handle a range.
@@ -14,11 +14,12 @@ package inc.PrettyHateMachin.e.Common;
  *
  */
 
-public class Range {
+public class Range extends Quality {
 
     private Comparable lowerBound, upperBound;
 
-    public Range(Comparable lowerBound, Comparable upperBound){
+    public Range(Comparable lowerBound, Comparable upperBound, String comment){
+        super(0xf, comment);
         if(checkValues(lowerBound, upperBound)){
             this.lowerBound = lowerBound;
             this.upperBound = upperBound;
