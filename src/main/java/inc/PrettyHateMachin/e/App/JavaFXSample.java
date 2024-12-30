@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
+// The following 130 lines od Code have been taken from the internet for javafx testing purpose| https://github.com/callicoder/javafx-examples/blob/master/javafx-registration-form-application/src/RegistrationFormApplication.java last visit: 30.12.2024
 public class JavaFXSample extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {

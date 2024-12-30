@@ -1,7 +1,13 @@
 package inc.PrettyHateMachin.e.App;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
+
 public class Character {
-    private String Name;
+    private StringProperty Name;
+    private IntegerProperty[] Sachen;
+
+
 
     /*List <> sachen
     Claudius von Vengaberg  Cool RPG
