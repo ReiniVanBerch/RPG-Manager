@@ -75,7 +75,7 @@ public class Character {
     public void setStrenght(int newstrength){
         strenght.set(newstrength);
     }
-    public void setItems(String newitems){
+    public void addItems(String newitems){
         items.add(new SimpleStringProperty(newitems));
     }
 
