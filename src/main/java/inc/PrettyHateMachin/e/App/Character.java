@@ -5,19 +5,23 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.ArrayList;
+
 public class Character {
     private final StringProperty name;
     private final IntegerProperty health;
     private final IntegerProperty constitution;
     private final IntegerProperty strenght;
-    private final StringProperty items;
+    private final ArrayList<StringProperty> items = new ArrayList<>();
 
-    public Character(String name, int health, int constitution, int strenght, String items) {
+    public Character(String name, int health, int constitution, int strenght, ArrayList<String> itemsin) {
         this.name = new SimpleStringProperty(name);
         this.health = new SimpleIntegerProperty(health);
         this.constitution = new SimpleIntegerProperty(constitution);
         this.strenght = new SimpleIntegerProperty(strenght);
-        this.items = new SimpleStringProperty(items);
+        for(String item : itemsin){
+            items.add(new SimpleStringProperty(item));
+        }
     }
 
     public String getName() {
@@ -52,11 +56,11 @@ public class Character {
         return strenght;
     }
 
-    public String getItems() {
-        return items.get();
+    /*public ArrayList<String> getItems() {
+        return items.i;
     }
-
-    public StringProperty itemsProperty() {
+    */
+    public ArrayList<StringProperty> itemsProperty() {
         return items;
     }
     public void setName(String newname) {
@@ -72,7 +76,7 @@ public class Character {
         strenght.set(newstrength);
     }
     public void setItems(String newitems){
-        items.set(newitems);
+        items.add(new SimpleStringProperty(newitems));
     }
 
 /*List <> sachen
