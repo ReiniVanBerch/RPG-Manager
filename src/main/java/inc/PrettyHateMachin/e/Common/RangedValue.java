@@ -1,4 +1,4 @@
-package inc.PrettyHateMachin.e.Common;
+package inc.prettyhatemachin.e.Common;
 
 /**
  * @author V. Berchtold

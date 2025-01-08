@@ -1,4 +1,4 @@
-package inc.PrettyHateMachin.e.App;
+package inc.prettyhatemachin.e.App;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

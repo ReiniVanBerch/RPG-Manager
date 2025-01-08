@@ -1,5 +1,7 @@
-package inc.PrettyHateMachin.e.App;
+package inc.prettyhatemachin.e.App;
 
+import inc.prettyhatemachin.e.Common.ChangingValue;
+import inc.prettyhatemachin.e.Common.FixedValue;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -11,14 +13,18 @@ public class Character {
     private final StringProperty name;
     private final IntegerProperty health;
     private final IntegerProperty constitution;
-    private final IntegerProperty strenght;
+    private final IntegerProperty strength;
     private final ArrayList<StringProperty> items = new ArrayList<>();
+    public FixedValue name_value;
+    public ChangingValue health_value;
+    public ChangingValue constitution_value;
+    public ChangingValue strength_value;
 
-    public Character(String name, int health, int constitution, int strenght, ArrayList<String> itemsin) {
+    public Character(String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
         this.name = new SimpleStringProperty(name);
         this.health = new SimpleIntegerProperty(health);
         this.constitution = new SimpleIntegerProperty(constitution);
-        this.strenght = new SimpleIntegerProperty(strenght);
+        this.strength = new SimpleIntegerProperty(strength);
         for(String item : itemsin){
             items.add(new SimpleStringProperty(item));
         }
@@ -48,12 +54,12 @@ public class Character {
         return constitution;
     }
 
-    public int getStrenght() {
-        return strenght.get();
+    public int getStrength() {
+        return strength.get();
     }
 
-    public IntegerProperty strenghtProperty() {
-        return strenght;
+    public IntegerProperty strengthProperty() {
+        return strength;
     }
 
     /*public ArrayList<String> getItems() {
@@ -72,12 +78,13 @@ public class Character {
     public void setConstitution(int newconst){
         constitution.set(newconst);
     }
-    public void setStrenght(int newstrength){
-        strenght.set(newstrength);
+    public void setStrength(int newstrength){
+        strength.set(newstrength);
     }
     public void addItems(String newitems){
         items.add(new SimpleStringProperty(newitems));
     }
+    
 
 /*List <> sachen
     Claudius von Vengaberg  Cool RPG

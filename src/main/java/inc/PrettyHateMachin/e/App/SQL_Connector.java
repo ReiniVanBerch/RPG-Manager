@@ -1,4 +1,4 @@
-package inc.PrettyHateMachin.e.App;
+package inc.prettyhatemachin.e.App;
 
 
 public class SQL_Connector {
