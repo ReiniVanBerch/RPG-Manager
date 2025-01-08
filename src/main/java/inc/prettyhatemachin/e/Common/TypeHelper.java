@@ -1,6 +1,4 @@
-package inc.prettyhatemachin.e.Common;
-
-//import org.json.*;
+package inc.prettyhatemachin.e.Common;//import org.json.*;
 
 /**
  * @author V. Berchtold

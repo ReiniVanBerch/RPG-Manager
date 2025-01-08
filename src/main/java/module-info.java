@@ -1,4 +1,4 @@
-module inc.prettyhatemachin.e.gametracker {
+module inc.prettyhatemachin.e {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -12,6 +12,6 @@ module inc.prettyhatemachin.e.gametracker {
     requires com.almasb.fxgl.all;
     requires kotlin.stdlib;
 
-    opens inc.prettyhatemachin.e.gametracker to javafx.fxml;
-    exports inc.prettyhatemachin.e.gametracker;
+    opens inc.prettyhatemachin.e to javafx.fxml;
+    exports inc.prettyhatemachin.e.App;
 }

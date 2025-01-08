@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'inc.prettyhatemachin.e.gametracker'
-    mainClass = 'inc.prettyhatemachin.e.gametracker.HelloApplication'
+    mainModule = 'inc.prettyhatemachin.e'
+    mainClass = 'inc.prettyhatemachin.e.HelloApplication'
 }
 
 javafx {

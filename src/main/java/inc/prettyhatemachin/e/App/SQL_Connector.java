@@ -1,6 +1,5 @@
 package inc.prettyhatemachin.e.App;
 
-
 public class SQL_Connector {
 
     // SQL-Configs

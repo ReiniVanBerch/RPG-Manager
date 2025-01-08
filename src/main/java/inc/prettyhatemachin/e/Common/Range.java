@@ -1,6 +1,5 @@
 package inc.prettyhatemachin.e.Common;
 
-
 /**
  * @author V. Berchtold
  * @version 0.1.2
