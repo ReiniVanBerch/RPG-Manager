@@ -10,6 +10,7 @@ import inc.prettyhatemachin.e.Character.Character;
 
 public class App {
     public static void main(String[] args) {
+        //LEISE AM AUSRASTEN
         String path =  App.class.getResource("character1.json").getPath();
         Character character = OpenCharacterFile.getCharacter("path");
 
