@@ -1,21 +1,20 @@
 
-package inc.prettyhatemachin.e.App;
+package inc.prettyhatemachin.e.TestingGrounds;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+//import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+//import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-// The following 130 lines od Code have been taken from the internet for javafx testing purpose| https://github.com/callicoder/javafx-examples/blob/master/javafx-registration-form-application/src/RegistrationFormApplication.java last visit: 30.12.2024
-public class JavaFXSample extends Application {
+public class HelloWorldApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Registration Form JavaFX Application");
@@ -38,7 +37,7 @@ public class JavaFXSample extends Application {
         GridPane gridPane = new GridPane();
 
         // Position the pane at the center of the screen, both vertically and horizontally
-        gridPane.setAlignment(Pos.CENTER);
+        //gridPane.setAlignment(Pos.CENTER);
 
         // Set a padding of 20px on each side
         gridPane.setPadding(new Insets(40, 40, 40, 40));
@@ -67,7 +66,7 @@ public class JavaFXSample extends Application {
     private void addUIControls(GridPane gridPane) {
         // Add Header
         Label headerLabel = new Label("Anlage Spieler");
-        headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        //headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         gridPane.add(headerLabel, 0,0,2,1);
         GridPane.setHalignment(headerLabel, HPos.CENTER);
         GridPane.setMargin(headerLabel, new Insets(20, 0,20,0));

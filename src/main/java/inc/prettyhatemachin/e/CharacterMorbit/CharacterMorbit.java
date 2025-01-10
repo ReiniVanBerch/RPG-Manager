@@ -1,4 +1,4 @@
-package inc.prettyhatemachin.e.Character;
+package inc.prettyhatemachin.e.CharacterMorbit;
 
 import inc.prettyhatemachin.e.Quality.*;
 import java.util.ArrayList;
@@ -20,13 +20,13 @@ import java.util.ArrayList;
  */
 
 
-public class Character {
+public class CharacterMorbit {
 
-    public Character(String name) {
+    public CharacterMorbit(String name) {
         this.name = name.strip();
     }
 
-    public Character(String name, ArrayList<Quality> qualities) {
+    public CharacterMorbit(String name, ArrayList<Quality> qualities) {
         this(name);
         this.qualities = qualities;
     }

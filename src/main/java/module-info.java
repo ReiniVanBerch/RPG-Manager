@@ -22,14 +22,12 @@ module inc.prettyhatemachin.e {
     requires java.desktop;
 
     exports inc.prettyhatemachin.e.App;
-    exports inc.prettyhatemachin.e.Character;
+    exports inc.prettyhatemachin.e.CharacterMorbit;
     exports inc.prettyhatemachin.e.Exception;
-    exports inc.prettyhatemachin.e.Main;
+    exports inc.prettyhatemachin.e.TestingGrounds;
     exports inc.prettyhatemachin.e.Tools;
     exports inc.prettyhatemachin.e.Quality;
-
-
-
+    exports inc.prettyhatemachin.e.Controller;
 
 
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity"
+      maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0"
+      prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/16"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="inc.prettyhatemachin.e.Controller.CharacterStaticController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="450.0"> <!-- scene-->
+         <children>
+            <HBox prefHeight="200.0" prefWidth="450.0"> <!-- container boxen 1 & 2-->
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="225.0" /> <!-- character box 1-->
+                  <VBox prefHeight="200.0" prefWidth="225.0" /> <!--  character box 2-->
+               </children></HBox>
+            <HBox prefHeight="200.0" prefWidth="450.0"> <!-- container boxen 3 & 4-->
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="225.0" /> <!-- character box 3-->
+                  <VBox prefHeight="200.0" prefWidth="225.0" /> <!-- character box 4-->
+               </children></HBox>
+         </children></VBox>
+      <VBox prefHeight="400.0" prefWidth="150.0" /> <!-- characer items list box-->
+   </children>
+</HBox>

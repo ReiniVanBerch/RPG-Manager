@@ -2,7 +2,7 @@ package inc.prettyhatemachin.e.Tools;
 
 
 
-import inc.prettyhatemachin.e.Character.Character;
+import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
 import inc.prettyhatemachin.e.Quality.Quality;
 import org.json.*;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public abstract class OpenCharacterFile {
 
-    static public Character getCharacter(String filePath) {
+    static public CharacterMorbit getCharacter(String filePath) {
         try {
 
 
@@ -46,7 +46,7 @@ public abstract class OpenCharacterFile {
 
             }
 
-            return new Character(name, qualities);
+            return new CharacterMorbit(name, qualities);
 
 
         }catch (IOException ex) {
