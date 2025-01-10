@@ -1,5 +1,7 @@
 package inc.prettyhatemachin.e.Common;
 
+import java.util.ArrayList;
+
 /**
  * @author V. Berchtold
  * @version 0.1.2
@@ -15,16 +17,23 @@ package inc.prettyhatemachin.e.Common;
 
 public class Range extends Quality {
 
-    private Comparable lowerBound, upperBound;
+    private Object lowerBound, upperBound;
 
-    public Range(Comparable lowerBound, Comparable upperBound, String comment){
-        super(0xf, comment);
-        if(checkValues(lowerBound, upperBound)){
-            this.lowerBound = lowerBound;
-            this.upperBound = upperBound;
+    public Range(String comment, int typeNumber, ArrayList<?> range){
+        super(comment, typeNumber, range);
+        
+        if(range.size() == 2){
+            this.lowerBound = range.get(0);
+            this.upperBound = range.get(1);
+            /*
+            if (isComparable(range.get(0)))
+            if(checkValues(lowerBound, upperBound)){
+            */
         }
     }
 
+
+/*
     public boolean checkValues(Comparable lowerBound, Comparable upperBound){
         try{
             if(lowerBound.compareTo(upperBound) >= 0 ){
@@ -44,6 +53,7 @@ public class Range extends Quality {
         }
     }
 
+
     public Object getLowerBound(){return this.lowerBound;}
     public Object getUpperBound(){return this.upperBound;}
 
@@ -58,4 +68,5 @@ public class Range extends Quality {
             this.upperBound = upperBound;
         }
     }
+    */
 }

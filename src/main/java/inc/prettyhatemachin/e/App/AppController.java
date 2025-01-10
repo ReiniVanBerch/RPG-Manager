@@ -1,3 +1,4 @@
+/*
 package inc.prettyhatemachin.e.App;
 
 import javafx.collections.FXCollections;
@@ -16,3 +17,5 @@ public class AppController {
             new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}})
     );
 }
+*/
+

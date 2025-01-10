@@ -1,3 +1,4 @@
+/*
 package inc.prettyhatemachin.e.App;
 
 import javafx.application.Application;
@@ -142,3 +143,4 @@ public class JavaFXSample extends Application {
         launch(args);
     }
 }
+*/

@@ -1,4 +1,6 @@
 module inc.prettyhatemachin.e {
+
+    /*
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,8 +12,18 @@ module inc.prettyhatemachin.e {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
-    requires kotlin.stdlib;
+
+
+
+    requires kotlin.stdlib;*/
+    requires jdk.jsobject;
+    requires org.json;
+    requires jdk.jdi;
+    requires java.desktop;
 
     opens inc.prettyhatemachin.e to javafx.fxml;
     exports inc.prettyhatemachin.e.App;
+    exports inc.prettyhatemachin.e.Tools;
+    exports inc.prettyhatemachin.e.Common;
+    exports inc.prettyhatemachin.e.Character;
 }

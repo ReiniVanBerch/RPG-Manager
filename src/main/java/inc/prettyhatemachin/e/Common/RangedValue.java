@@ -1,5 +1,9 @@
 package inc.prettyhatemachin.e.Common;
 
+import com.sun.jdi.Value;
+
+import java.util.ArrayList;
+
 /**
  * @author V. Berchtold
  * @version 0.1.1
@@ -13,17 +17,37 @@ package inc.prettyhatemachin.e.Common;
  *
  */
 
-public class RangedValue  {
+public class RangedValue extends Quality {
 
-    private Comparable lowerBound, upperBound, value;
+    private Object lowerBound, upperBound, value;
 
-    public RangedValue(Comparable lowerBound, Comparable upperBound, Comparable value){
+    public RangedValue(String comment, int typeNumber, ArrayList<?> rangedValue){
+        super(comment, typeNumber, rangedValue);
+
+        if(rangedValue.size() == 3){
+            this.lowerBound = rangedValue.get(0);
+            this.upperBound = rangedValue.get(1);
+            this.value = rangedValue.get(2);
+            /*
+            if (isComparable(range.get(0)))
+            if(checkValues(lowerBound, upperBound)){
+            */
+        }
+    }
+     /*
+    public RangedValue(String name, Class<?> c,  lowerBound, Comparable upperBound, Comparable value){
+        super(name, c);
+
+
         if(checkValues(lowerBound, upperBound, value)){
             this.lowerBound = lowerBound;
             this.upperBound = upperBound;
             this.value = value;
         }
+
+
     }
+
 
     public boolean checkValues(Comparable lowerBound, Comparable upperBound, Comparable value){
         try{
@@ -71,4 +95,5 @@ public class RangedValue  {
             this.value = value;
         }
     }
+    */
 }
