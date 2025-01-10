@@ -1,4 +1,4 @@
-/*
+
 package inc.prettyhatemachin.e.App;
 
 import javafx.application.Application;
@@ -142,4 +142,4 @@ public class HelloWorldApplication extends Application {
         launch(args);
     }
 }
-*/
+

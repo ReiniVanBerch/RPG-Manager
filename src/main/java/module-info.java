@@ -1,6 +1,6 @@
 module inc.prettyhatemachin.e {
 
-    /*
+    //javaFX stuff
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -15,17 +15,20 @@ module inc.prettyhatemachin.e {
 
 
 
-    requires kotlin.stdlib;*/
+    requires kotlin.stdlib;
     requires jdk.jsobject;
     requires org.json;
     requires jdk.jdi;
     requires java.desktop;
 
     exports inc.prettyhatemachin.e.App;
-    exports inc.prettyhatemachin.e.Tools;
-    exports inc.prettyhatemachin.e.Quality;
     exports inc.prettyhatemachin.e.Character;
     exports inc.prettyhatemachin.e.Exception;
+    exports inc.prettyhatemachin.e.Main;
+    exports inc.prettyhatemachin.e.Tools;
+    exports inc.prettyhatemachin.e.Quality;
+
+
 
 
 

@@ -1,34 +1,14 @@
-package inc.prettyhatemachin.e.Tools;//import org.json.*;
+package inc.prettyhatemachin.e.Tools;
 
 /**
- * @author V. Berchtold
- * @version 0.1.5
+ * @author Morbit
+ * @version 0.1.7
+ *
+ * RECENT:
+ * Revamped comment and sent type explanation to {@link inc.prettyhatemachin.e.Quality.Quality}
  *
  * PURPOSE:
- * The whole type is represented in hexadecimal, called typeNumber, but is just 1 Byte.
- * We split the byte into two half-bytes where the ...
- * ... first represents the "dataType", typeInt, so whether its an type o integer, double, boolean, whatever
- * ... second represetns the "quality", qualityInt, so whether its a sole value, a range, an array etc.
- *      -   the quality is translatable between types, so *F will always be an array,
- *          some have only theoretical types, it lets you generate boolean ranges, just not really ~worthy~
- *
- *
- * Types for the kind of information to be stored
- * as of 06.12.2024, day of the comeback
- *
- * 0# / Boolean
- * 1# / Integerg
- * 2# / Double
- * E# / Strings
- * F# / Errors and Debug
- *
- * #0 - Fixed Value
- * #1 - Double value
- * #2 - Range
- * #3 - Range with a current value
- * * - ---left open for future---
- * #E - Lists
- * #F - Errors and Debug for the specified type
+
  *
  *
  */

@@ -1,8 +1,8 @@
-/*
+
 package inc.prettyhatemachin.e.App;
-/*
-import inc.prettyhatemachin.e.Common.*;
-import inc.prettyhatemachin.e.Common.FixedValue;
+
+import inc.prettyhatemachin.e.Quality.*;
+import inc.prettyhatemachin.e.Quality.FixedValue;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,16 +12,12 @@ import java.util.ArrayList;
 
 public class Character {
 
-        Hey, des isch kle was i mit dynamic gmoant hab,
-        mir hon des jetzt fuer eine Art von Character, aba ne universell.
-
-        Miene Version
-        private final StringProperty name;
 
 
-     */
 
-    /*
+
+
+
         private final StringProperty name;
         private final IntegerProperty health;
         private final IntegerProperty constitution;
@@ -74,8 +70,9 @@ public class Character {
             return strength;
         }
 
-        /*public ArrayList<String> getItems() {
-            return items.i;
+        public ArrayList<String> getItems() {
+            //return items;
+            return new ArrayList<>();
         }
 
     public ArrayList<StringProperty> itemsProperty() {
@@ -96,7 +93,8 @@ public class Character {
     public void addItems(String newitems){
         items.add(new SimpleStringProperty(newitems));
     }
-    
+
+    /*
 
 List <> sachen
     Claudius von Vengaberg  Cool RPG
@@ -114,8 +112,8 @@ List <> sachen
     Ayden
 
 
-
+*/
 
 
 }
-*/
+

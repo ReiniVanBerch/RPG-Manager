@@ -1,5 +1,7 @@
 package inc.prettyhatemachin.e.Tools;
 
+
+
 import inc.prettyhatemachin.e.Character.Character;
 import inc.prettyhatemachin.e.Quality.Quality;
 import org.json.*;
