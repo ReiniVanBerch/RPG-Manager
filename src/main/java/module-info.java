@@ -24,6 +24,7 @@ module inc.prettyhatemachin.e {
     opens inc.prettyhatemachin.e to javafx.fxml;
     exports inc.prettyhatemachin.e.App;
     exports inc.prettyhatemachin.e.Tools;
-    exports inc.prettyhatemachin.e.Common;
+    exports inc.prettyhatemachin.e.Quality;
     exports inc.prettyhatemachin.e.Character;
+    exports inc.prettyhatemachin.e.Exception;
 }

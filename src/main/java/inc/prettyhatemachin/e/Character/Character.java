@@ -1,6 +1,6 @@
 package inc.prettyhatemachin.e.Character;
 
-import inc.prettyhatemachin.e.Common.*;
+import inc.prettyhatemachin.e.Quality.*;
 import java.util.ArrayList;
 
 /**

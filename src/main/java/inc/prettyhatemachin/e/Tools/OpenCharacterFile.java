@@ -1,18 +1,14 @@
 package inc.prettyhatemachin.e.Tools;
 
 import inc.prettyhatemachin.e.Character.Character;
-import inc.prettyhatemachin.e.Common.Quality;
-import inc.prettyhatemachin.e.Common.TypeHelper;
-import netscape.javascript.JSObject;
+import inc.prettyhatemachin.e.Quality.Quality;
 import org.json.*;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class OpenCharacterFile {
 

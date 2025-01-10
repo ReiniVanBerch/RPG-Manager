@@ -1,4 +1,4 @@
-package inc.prettyhatemachin.e.Common;
+package inc.prettyhatemachin.e.Quality;
 
 import java.util.ArrayList;
 

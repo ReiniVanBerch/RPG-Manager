@@ -1,4 +1,6 @@
-package inc.prettyhatemachin.e.Common;
+package inc.prettyhatemachin.e.Quality;
+
+import inc.prettyhatemachin.e.Tools.TypeHelper;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -11,7 +11,9 @@ import inc.prettyhatemachin.e.Character.Character;
 public class App {
     public static void main(String[] args) {
         //LEISE AM AUSRASTEN
-        String path =  App.class.getResource("character1.json").getPath();
+        String json = "inc.prettyhatemachin.e.sample.character/character1.json";
+
+        String path =  App.class.getResource(json).getPath();
         Character character = OpenCharacterFile.getCharacter("path");
 
 

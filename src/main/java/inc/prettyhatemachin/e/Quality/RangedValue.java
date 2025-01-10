@@ -1,6 +1,4 @@
-package inc.prettyhatemachin.e.Common;
-
-import com.sun.jdi.Value;
+package inc.prettyhatemachin.e.Quality;
 
 import java.util.ArrayList;
 

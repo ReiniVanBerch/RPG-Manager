@@ -1,4 +1,4 @@
-package inc.prettyhatemachin.e.Common;//import org.json.*;
+package inc.prettyhatemachin.e.Tools;//import org.json.*;
 
 /**
  * @author V. Berchtold
@@ -33,6 +33,8 @@ package inc.prettyhatemachin.e.Common;//import org.json.*;
  *
  */
 
+
+import inc.prettyhatemachin.e.Quality.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

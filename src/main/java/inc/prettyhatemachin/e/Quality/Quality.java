@@ -1,5 +1,8 @@
-package inc.prettyhatemachin.e.Common;
+package inc.prettyhatemachin.e.Quality;
 
+
+import inc.prettyhatemachin.e.Exception.InvalidTypeException;
+import inc.prettyhatemachin.e.Tools.TypeHelper;
 
 import java.util.ArrayList;
 

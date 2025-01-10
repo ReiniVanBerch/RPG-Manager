@@ -1,4 +1,4 @@
-package inc.prettyhatemachin.e.Common;
+package inc.prettyhatemachin.e.Exception;
 
 public class InvalidTypeException extends Exception {
 
