@@ -1,67 +1,54 @@
 package inc.prettyhatemachin.e.Common;
 
-import java.lang.reflect.Type;
+
+import java.util.ArrayList;
 
 public class Quality {
 
-    private int typeNumber;
+    private Class<? extends Quality> quality;
+    private Class<?> datatype;
     private String comment;
+    private ArrayList<?> values;
+
+    TypeHelper typeHelper;
 
 
+    public Quality(String comment, int typeNumber, ArrayList<?> values) {
 
-    public Quality(int typeNumber, String comment){
+        try{
 
-        this.comment = comment;
+            this.comment = comment;
+            this.values = values;
 
-        if(typeNumber < 0xFF) {
-            this.typeNumber = typeNumber;
+            if(typeNumber < 0xFF) {
+                TypeHelper typeHelper = new TypeHelper();
+
+                this.quality = typeHelper.getQuality(typeNumber);
+                this.datatype = typeHelper.getDataType(typeNumber);
+            }
+            else throw new InvalidTypeException("");
+        } catch (InvalidTypeException e){
+
+            //
+            //INVALID INPUT FOR
+            //
+
+
         }
 
     }
 
-    public int getTypeNumber(){return this.typeNumber;}
+    public int getTypeNumber() {
+        int qi = TypeHelper.getQualityInt(this.quality);
+        int ti = TypeHelper.getTypeInt(this.datatype);
+        return qi + ti;
+    }
 
     public void setComment(String comment){this.comment = comment;}
     public String getComment(){return this.comment;}
 
-    public Type getDataType(){
-        int typeInt = this.typeNumber % 0x10;
-
-        try {
-            switch (typeInt) {
-
-                case 0x0: {
-                    return boolean.class.getClass();
-                }
-
-                case 0x1: {
-                    return int.class.getClass();
-                }
-
-                case 0x2: {
-                    return double.class.getClass();
-                }
-
-                case 0xE: {
-                    return String.class.getClass();
-                }
-
-                case 0xF: {
-                    throw new InvalidTypeException("This type is reserved for errors and debug");
-                }
-
-                default:
-                    throw new InvalidTypeException("The type of this is faulty atleast in its datatype");
-
-            }
-        }
-        catch(InvalidTypeException e){
-            //
-            // HANDLE THIS ERROR PLS; I DONT KNOW WHAT DO TO WITH IT
-            //
-            return null;
-        }
-
+    public Class<?> getDataType(){
+        return this.datatype;
     }
 
 

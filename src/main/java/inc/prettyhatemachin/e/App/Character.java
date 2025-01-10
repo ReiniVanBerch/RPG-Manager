@@ -1,5 +1,5 @@
 package inc.prettyhatemachin.e.App;
-
+/*
 import inc.prettyhatemachin.e.Common.*;
 import inc.prettyhatemachin.e.Common.FixedValue;
 import javafx.beans.property.IntegerProperty;
@@ -10,62 +10,73 @@ import javafx.beans.property.StringProperty;
 import java.util.ArrayList;
 
 public class Character {
-    private final StringProperty name;
-    private final IntegerProperty health;
-    private final IntegerProperty constitution;
-    private final IntegerProperty strength;
-    private final ArrayList<StringProperty> items = new ArrayList<>();
-    public FixedValue name_value;
-    public ChangingValue health_value;
-    public ChangingValue constitution_value;
-    public ChangingValue strength_value;
 
-    public Character(String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
-        this.name = new SimpleStringProperty(name);
-        this.health = new SimpleIntegerProperty(health);
-        this.constitution = new SimpleIntegerProperty(constitution);
-        this.strength = new SimpleIntegerProperty(strength);
-        for(String item : itemsin){
-            items.add(new SimpleStringProperty(item));
+        Hey, des isch kle was i mit dynamic gmoant hab,
+        mir hon des jetzt fuer eine Art von Character, aba ne universell.
+
+        Miene Version
+        private final StringProperty name;
+
+
+     */
+
+    /*
+        private final StringProperty name;
+        private final IntegerProperty health;
+        private final IntegerProperty constitution;
+        private final IntegerProperty strength;
+        private final ArrayList<StringProperty> items = new ArrayList<>();
+        public FixedValue name_value;
+        public ChangingValue health_value;
+        public ChangingValue constitution_value;
+        public ChangingValue strength_value;
+
+        public Character(String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
+            this.name = new SimpleStringProperty(name);
+            this.health = new SimpleIntegerProperty(health);
+            this.constitution = new SimpleIntegerProperty(constitution);
+            this.strength = new SimpleIntegerProperty(strength);
+            for(String item : itemsin){
+                items.add(new SimpleStringProperty(item));
+            }
         }
-    }
 
-    public String getName() {
-        return name.get();
-    }
+        public String getName() {
+            return name.get();
+        }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
+        public StringProperty nameProperty() {
+            return name;
+        }
 
-    public int getHealth() {
-        return health.get();
-    }
+        public int getHealth() {
+            return health.get();
+        }
 
-    public IntegerProperty healthProperty() {
-        return health;
-    }
+        public IntegerProperty healthProperty() {
+            return health;
+        }
 
-    public int getConstitution() {
-        return constitution.get();
-    }
+        public int getConstitution() {
+            return constitution.get();
+        }
 
-    public IntegerProperty constitutionProperty() {
-        return constitution;
-    }
+        public IntegerProperty constitutionProperty() {
+            return constitution;
+        }
 
-    public int getStrength() {
-        return strength.get();
-    }
+        public int getStrength() {
+            return strength.get();
+        }
 
-    public IntegerProperty strengthProperty() {
-        return strength;
-    }
+        public IntegerProperty strengthProperty() {
+            return strength;
+        }
 
-    /*public ArrayList<String> getItems() {
-        return items.i;
-    }
-    */
+        /*public ArrayList<String> getItems() {
+            return items.i;
+        }
+
     public ArrayList<StringProperty> itemsProperty() {
         return items;
     }
@@ -86,7 +97,7 @@ public class Character {
     }
     
 
-/*List <> sachen
+List <> sachen
     Claudius von Vengaberg  Cool RPG
     Trevor Michael
     RPG for Bros
@@ -103,6 +114,7 @@ public class Character {
 
 
 
-    */
+
 
 }
+*/

@@ -1,5 +1,7 @@
 package inc.prettyhatemachin.e.Common;
 
+import com.sun.jdi.Value;
+
 /**
  * @author V. Berchtold
  * @version 0.1.1
@@ -13,11 +15,12 @@ package inc.prettyhatemachin.e.Common;
  *
  */
 
-public class RangedValue  {
+public class RangedValue extends Quality {
 
     private Comparable lowerBound, upperBound, value;
 
-    public RangedValue(Comparable lowerBound, Comparable upperBound, Comparable value){
+    public RangedValue(String name, Class<?> c,  lowerBound, Comparable upperBound, Comparable value){
+        super(name, c);
         if(checkValues(lowerBound, upperBound, value)){
             this.lowerBound = lowerBound;
             this.upperBound = upperBound;

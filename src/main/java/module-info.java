@@ -11,7 +11,12 @@ module inc.prettyhatemachin.e {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires kotlin.stdlib;
+    requires jdk.jsobject;
+    requires org.json;
+    requires jdk.jdi;
+    requires java.desktop;
 
     opens inc.prettyhatemachin.e to javafx.fxml;
     exports inc.prettyhatemachin.e.App;
+    exports inc.prettyhatemachin.e.Character;
 }

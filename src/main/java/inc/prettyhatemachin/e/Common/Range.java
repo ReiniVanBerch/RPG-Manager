@@ -1,5 +1,9 @@
 package inc.prettyhatemachin.e.Common;
 
+import java.util.ArrayList;
+
+import static com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo.isComparable;
+
 /**
  * @author V. Berchtold
  * @version 0.1.2
@@ -17,12 +21,20 @@ public class Range extends Quality {
 
     private Comparable lowerBound, upperBound;
 
-    public Range(Comparable lowerBound, Comparable upperBound, String comment){
-        super(0xf, comment);
-        if(checkValues(lowerBound, upperBound)){
-            this.lowerBound = lowerBound;
-            this.upperBound = upperBound;
+    public Range(String comment, int typeNumber, ArrayList<?> range){
+        super(comment, typeNumber, range);
+        
+        if(range.size() == 2){
+            if(isComparable(range.get(0)))
+            if(checkValues(lowerBound, upperBound)){
+                this.lowerBound = lowerBound;
+                this.upperBound = upperBound;
+            }
         }
+    }
+
+    private boolean isComparable(Object o) {
+        return false;
     }
 
     public boolean checkValues(Comparable lowerBound, Comparable upperBound){
