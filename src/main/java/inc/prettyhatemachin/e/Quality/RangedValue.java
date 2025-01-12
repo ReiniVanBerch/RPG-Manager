@@ -19,7 +19,7 @@ public class RangedValue extends Quality {
 
     private Object lowerBound, upperBound, value;
 
-    public RangedValue(String comment, int typeNumber, ArrayList<?> rangedValue){
+    public RangedValue(String comment, Integer typeNumber, ArrayList<Object> rangedValue){
         super(comment, typeNumber, rangedValue);
 
         if(rangedValue.size() == 3){

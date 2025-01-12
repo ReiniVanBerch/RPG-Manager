@@ -3,13 +3,18 @@ package inc.prettyhatemachin.e.Quality;
 import inc.prettyhatemachin.e.Exception.InvalidTypeException;
 import inc.prettyhatemachin.e.Tools.TypeHelper;
 
+import java.lang.constant.Constable;
 import java.util.ArrayList;
 
 /**
  * @author Morbit
- * @version 0.18
+ * @version 0.1.9
  *
- * PURPOSE: Mother of the other qualities and helps regulate the handling of these
+ * RECENTLY:
+ * Added an toString
+ *
+ * PURPOSE:
+ * Mother of the other qualities and helps regulate the handling of these
  * via defining things for the rest, while the rest gain extra handlers, as the data
  * of the different qualities is stored twice, once in the values list as in here
  * as well as there respective properties in their own classes.
@@ -67,12 +72,11 @@ public class Quality {
     private Class<? extends Quality> quality;
     private Class<?> datatype;
     private String comment;
-    private ArrayList<?> values;
+    private ArrayList<Object> values;
 
     TypeHelper typeHelper;
 
-
-    public Quality(String comment, int typeNumber, ArrayList<?> values) {
+    public Quality(String comment, int typeNumber, ArrayList<Object> values) {
 
         try{
 
@@ -80,10 +84,21 @@ public class Quality {
             this.values = values;
 
             if(typeNumber < 0xFF) {
-                typeHelper = new TypeHelper();
 
-                this.quality = typeHelper.getQuality(typeNumber);
-                this.datatype = typeHelper.getDataType(typeNumber);
+                this.quality = TypeHelper.getQuality(typeNumber);
+                this.datatype = TypeHelper.getDataType(typeNumber);
+
+                for(int i = 0 ; i < values.size() ; i++) {
+
+                    Object obj;
+                    Object j = values.get(i);
+                    if(j.getClass() == Integer.class && datatype == Double.class) {
+                        obj = (Double) ((Integer) j).doubleValue();
+                    }else {
+                         obj = datatype.cast(j);
+                    }
+                    values.set(i, obj) ;
+                }
             }
             else throw new InvalidTypeException("");
         } catch (InvalidTypeException e){
@@ -106,9 +121,17 @@ public class Quality {
     public void setComment(String comment){this.comment = comment;}
     public String getComment(){return this.comment;}
 
+    public ArrayList<Object> getValues(){return this.values;}
+
     public Class<?> getDataType(){
         return this.datatype;
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s: %s - %s",this.comment, datatype.getSimpleName(), quality.getSimpleName());
+
+
+    }
 
 }

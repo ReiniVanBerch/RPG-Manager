@@ -20,6 +20,7 @@ module inc.prettyhatemachin.e {
     requires org.json;
     requires jdk.jdi;
     requires java.desktop;
+    requires javafx.graphics;
 
     exports inc.prettyhatemachin.e.App;
     exports inc.prettyhatemachin.e.CharacterMorbit;

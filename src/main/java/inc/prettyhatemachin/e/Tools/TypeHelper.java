@@ -40,7 +40,8 @@ public class TypeHelper {
         } else if (c.equals(ListValue.class)) {
             return 0x0E; // ListValue class
         } else {
-            return 0xFF; // Default for unknown classes
+            System.out.println(c.getSimpleName());
+            return 0x0F; // Default for unknown classes
         }
     }
 
@@ -52,24 +53,27 @@ public class TypeHelper {
         } else if (c.equals(Integer.class)) {
             return 0x10; // Integer class
         } else if (c.equals(Double.class)) {
-            return 0x02; // Double class
+            return 0x20; // Double class
         } else if (c.equals(String.class)) {
             return 0xE0; // String class
         } else {
-            return 0xFF; // Default for unknown or unhandled class types
+            System.out.println(c.getSimpleName());
+            return 0xF0; // Default for unknown or unhandled class types
         }
     }
 
     public static Class<?> getDataType(int typeNumber){
         int num = typeNumber / 0x10;
+
+
         switch (num){
-            case 0x00:
-                return boolean.class;
-            case 0x01:
-                return int.class;
-            case 0x02:
-                return double.class;
-            case 0x03:
+            case 0x0:
+                return Boolean.class;
+            case 0x1:
+                return Integer.class;
+            case 0x2:
+                return Double.class;
+            case 0xE:
                 return String.class;
             default:
                 return Object.class;
@@ -96,16 +100,16 @@ public class TypeHelper {
     }
 
 
-    public static <T extends Quality> Quality generateQuality(String comment, int typeNumber, ArrayList<T> qualities) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public static <T extends Quality> Quality generateQuality(String comment, Integer typeNumber, ArrayList<Object> values) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
         Object[] parameters = new Object[3];
         parameters[0] = comment;
         parameters[1] = typeNumber;
-        parameters[2] = qualities;
+        parameters[2] = values;
 
 
-        Class<T> c = (Class<T>) getQuality(typeNumber);
-        Constructor<T> constructor = c.getConstructor(Quality.class);
+        Class<T> c = getQuality(typeNumber);
+        Constructor<T> constructor = c.getConstructor(String.class, Integer.class, values.getClass() );
 
         return constructor.newInstance(parameters);
 

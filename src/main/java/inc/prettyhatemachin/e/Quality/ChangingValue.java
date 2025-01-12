@@ -8,19 +8,15 @@ public class ChangingValue extends Quality {
 
     private Object changingValue;
 
-    public ChangingValue(String comment, int typeNumber, ArrayList<?> changingValue) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public ChangingValue(String comment, Integer typeNumber, ArrayList<Object> changingValue) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         super(comment, typeNumber, changingValue);
-
-        setChangingValue(changingValue);
+        this.changingValue = changingValue;
     }
 
     public Object getChangingValue(){return changingValue;}
-    public void setChangingValue(Object changingValue) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class<?> c = this.getDataType();
-        Constructor<?> constructor = c.getConstructor(c.getClass());
-
-        this.changingValue = c.cast(constructor.newInstance(changingValue));
-
-        this.changingValue = changingValue;
+    public void setChangingValue(Object changingValue) {
+        if(changingValue.getClass() == this.changingValue.getClass()){
+            this.changingValue = changingValue;
+        }
     }
 }

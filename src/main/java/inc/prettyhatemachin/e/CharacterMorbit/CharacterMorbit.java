@@ -41,13 +41,20 @@ public class CharacterMorbit {
     }
 
     ArrayList<Quality> qualities = new ArrayList<>();
-    public ArrayList<Quality> getProperties() { return qualities; }
+    public ArrayList<Quality> getQualities() { return qualities; }
 
     public <T extends Quality> void addProperty(T property) {
         qualities.add(property);
-
     }
 
+    @Override
+    public String toString() {
 
+        String output = name + " ~ \n";
+        for (Quality q : qualities) {
+            output += q.toString() + "\n";
+        }
 
+        return output;
+    }
 }

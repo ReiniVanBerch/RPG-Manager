@@ -10,13 +10,9 @@ public class FixedValue extends Quality{
 
     private Object fixedValue;
 
-    public FixedValue(String comment, int typeNumber, ArrayList<?> fixedValue) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public FixedValue(String comment, Integer typeNumber, ArrayList<Object> fixedValue) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         super(comment, typeNumber, fixedValue);
-
-        Class<?> c = TypeHelper.getDataType(typeNumber);
-        Constructor<?> constructor = c.getConstructor(c.getClass());
-
-        this.fixedValue = c.cast( constructor.newInstance(fixedValue));
+        this.fixedValue = fixedValue.get(0);
     }
 
     public Object getFixedValue(){

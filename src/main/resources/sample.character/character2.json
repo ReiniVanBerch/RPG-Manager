@@ -1,0 +1,55 @@
+{
+  "name": "Chris Santa",
+  "qualities": [
+    {
+      "comment": "Agility",
+      "typeNumber": 18,
+      "values": [9, 14]
+    },
+    {
+      "comment": "Endurance",
+      "typeNumber": 19,
+      "values": [11, 15, 13]
+    },
+    {
+      "comment": "Logic",
+      "typeNumber": 19,
+      "values": [16, 18, 20]
+    },
+    {
+      "comment": "Perception",
+      "typeNumber": 32,
+      "values": [12.8]
+    },
+    {
+      "comment": "Empathy",
+      "typeNumber": 35,
+      "values": [8.0, 12.0, 14.5]
+    },
+    {
+      "comment": "Energy",
+      "typeNumber": 46,
+      "values": [30.0, 40.5, 50.0]
+    },
+    {
+      "comment": "HasShield",
+      "typeNumber": 0,
+      "values": [true]
+    },
+    {
+      "comment": "CanSwim",
+      "typeNumber": 1,
+      "values": [false]
+    },
+    {
+      "comment": "Favorite Foods",
+      "typeNumber": 238,
+      "values": ["Pizza", "Sushi", "Ice Cream"]
+    },
+    {
+      "comment": "Known Languages",
+      "typeNumber": 238,
+      "values": ["English", "Spanish", "French"]
+    }
+  ]
+}

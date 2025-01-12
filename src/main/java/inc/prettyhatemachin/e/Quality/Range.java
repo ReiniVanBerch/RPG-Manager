@@ -19,7 +19,7 @@ public class Range extends Quality {
 
     private Object lowerBound, upperBound;
 
-    public Range(String comment, int typeNumber, ArrayList<?> range){
+    public Range(String comment, Integer typeNumber, ArrayList<Object> range){
         super(comment, typeNumber, range);
         
         if(range.size() == 2){

@@ -1,0 +1,105 @@
+{
+  "name": "Jonathan Reed",
+  "qualities": [
+    {
+      "comment": "Strength (STR)",
+      "typeNumber": 16,
+      "values": [60]
+    },
+    {
+      "comment": "Dexterity (DEX)",
+      "typeNumber": 16,
+      "values": [70]
+    },
+    {
+      "comment": "Constitution (CON)",
+      "typeNumber": 16,
+      "values": [50]
+    },
+    {
+      "comment": "Intelligence (INT)",
+      "typeNumber": 16,
+      "values": [80]
+    },
+    {
+      "comment": "Power (POW)",
+      "typeNumber": 16,
+      "values": [55]
+    },
+    {
+      "comment": "Appearance (APP)",
+      "typeNumber": 16,
+      "values": [40]
+    },
+    {
+      "comment": "Size (SIZ)",
+      "typeNumber": 16,
+      "values": [65]
+    },
+    {
+      "comment": "Education (EDU)",
+      "typeNumber": 16,
+      "values": [75]
+    },
+    {
+      "comment": "Sanity",
+      "typeNumber": 18,
+      "values": [50, 55]
+    },
+    {
+      "comment": "Luck",
+      "typeNumber": 18,
+      "values": [35, 50]
+    },
+    {
+      "comment": "Hit Points",
+      "typeNumber": 46,
+      "values": [10.0, 11.0, 12.0]
+    },
+    {
+      "comment": "Investigate Skill (Spot Hidden)",
+      "typeNumber": 32,
+      "values": [65.0]
+    },
+    {
+      "comment": "Library Use",
+      "typeNumber": 32,
+      "values": [75.0]
+    },
+    {
+      "comment": "Persuade",
+      "typeNumber": 32,
+      "values": [50.0]
+    },
+    {
+      "comment": "First Aid",
+      "typeNumber": 32,
+      "values": [60.0]
+    },
+    {
+      "comment": "Firearms (Handgun)",
+      "typeNumber": 32,
+      "values": [45.0]
+    },
+    {
+      "comment": "Languages Known",
+      "typeNumber": 238,
+      "values": ["English", "Latin", "German"]
+    },
+    {
+      "comment": "Phobias",
+      "typeNumber": 238,
+      "values": ["Claustrophobia", "Nyctophobia"]
+    },
+    {
+      "comment": "Backstory",
+      "typeNumber": 238,
+      "values": ["Jonathan grew up in Arkham, fascinated by forbidden texts. His curiosity led him to uncover ancient secrets."]
+    },
+    {
+      "comment": "IsAlive",
+      "typeNumber": 0,
+      "values": [true]
+    }
+  ]
+}
