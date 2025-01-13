@@ -61,12 +61,32 @@ public class CharacterStaticController {
 
     @FXML
     //TODO: different method for each different characteristic so i know which one to increase/decrease?
-    private void increaseOne () {
+    private void increaseOneHealth () {
 
     }
 
     @FXML
-    private void decreaseOne() {
+    private void decreaseOneHealth() {
+
+    }
+
+    @FXML
+    private void increaseOneConstitution() {
+
+    }
+
+    @FXML
+    private void decreaseOneConstitution() {
+
+    }
+
+    @FXML
+    private void increaseOneStrength() {
+
+    }
+
+    @FXML
+    private void decreaseOneStrength() {
 
     }
 
