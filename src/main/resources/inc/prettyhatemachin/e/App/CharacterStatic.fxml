@@ -43,17 +43,17 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="-1"> <!-- decrease health-->
+                                    <Button onAction="#decreaseOneHealth" mnemonicParsing="false" text="-1"> <!-- decrease health-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <ProgressBar prefWidth="160.0" progress="0.0">
+                                    <ProgressBar fx:id="progressBarHealth" prefWidth="160.0" progress="0.0">
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button mnemonicParsing="false" text="+1"> <!-- increase health-->
+                                    <Button onAction="#increaseOneHealth" mnemonicParsing="false" text="+1"> <!-- increase health-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
@@ -81,17 +81,17 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="-1"> <!-- decrease constitution-->
+                                    <Button onAction="#decreaseOneConstitution" mnemonicParsing="false" text="-1"> <!-- decrease constitution-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <ProgressBar prefWidth="160.0" progress="0.0">
+                                    <ProgressBar fx:id="progressBarConstitution" prefWidth="160.0" progress="0.0">
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button mnemonicParsing="false" text="+1"> <!-- increase constitution-->
+                                    <Button onAction="#increaseOneConstitution" mnemonicParsing="false" text="+1"> <!-- increase constitution-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
@@ -120,17 +120,17 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="-1"> <!-- decrease strength-->
+                                    <Button onAction="#decreaseOneStrength" mnemonicParsing="false" text="-1"> <!-- decrease strength-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <ProgressBar prefWidth="160.0" progress="0.0">
+                                    <ProgressBar fx:id="progressBarStrength" prefWidth="160.0" progress="0.0"> <!--progress bar strength-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button mnemonicParsing="false" text="+1"> <!-- increase strength-->
+                                    <Button onAction="#increaseOneStrength" mnemonicParsing="false" text="+1"> <!-- increase strength-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
@@ -155,17 +155,17 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="-1"> <!-- decrease characteristic 4-->
+                                    <Button onAction="#decreaseOneCharacteristic4" mnemonicParsing="false" text="-1"> <!--decrease characteristic 4 (not implemented)-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <ProgressBar prefWidth="160.0" progress="0.0">
+                                    <ProgressBar fx:id="progressBarCharacteristic4" prefWidth="160.0" progress="0.0"> <!--progress bar characteristic 4-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button mnemonicParsing="false" text="+1"> <!-- increase characteristic 4-->
+                                    <Button onAction="#increaseOneCharacteristic4" mnemonicParsing="false" text="+1"> <!--increase characteristic 4 (not implemented)-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
