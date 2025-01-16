@@ -5,6 +5,7 @@ module inc.prettyhatemachin.e {
     requires javafx.fxml;
     requires javafx.web;
     requires javafx.graphics;
+    requires javafx.media;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -32,6 +33,6 @@ module inc.prettyhatemachin.e {
     exports inc.prettyhatemachin.e.Controller;
 
     opens inc.prettyhatemachin.e.Controller;
-
+    opens inc.prettyhatemachin.e.App to javafx.fxml;
 
 }

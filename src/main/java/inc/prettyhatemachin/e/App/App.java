@@ -31,7 +31,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        //launch();
-        inc.prettyhatemachin.e.TestingGrounds.Main.init();
+        launch();
+        //inc.prettyhatemachin.e.TestingGrounds.Main.init();
     }
 }

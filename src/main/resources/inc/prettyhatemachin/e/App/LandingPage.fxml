@@ -24,6 +24,23 @@
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
+                  <Menu mnemonicParsing="false" text="Never">
+                     <items>
+                        <Menu mnemonicParsing="false" text="gonna">
+                          <items>
+                              <Menu mnemonicParsing="false" text="let">
+                                 <items>
+                                    <Menu mnemonicParsing="false" text="you">
+                                       <items>
+                                        <MenuItem mnemonicParsing="false" text="down" />
+                                       </items>
+                                    </Menu>
+                                 </items>
+                              </Menu>
+                          </items>
+                        </Menu>
+                     </items>
+                  </Menu>
             </items>
           </Menu>
         </menus>
