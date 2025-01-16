@@ -6,45 +6,46 @@ package inc.prettyhatemachin.e.TestingGrounds;
  *---------------------------------------------------------------------------------------*/
 
 import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
-import inc.prettyhatemachin.e.Tools.CharacterFileHandler;
-import org.json.JSONObject;
+import inc.prettyhatemachin.e.Controller.CharacterDynamicController;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import inc.prettyhatemachin.e.App.App;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
-
-public class Main {
-    public static void init() throws IOException {
+public class Main extends Application{
+    private static CharacterMorbit cm;
+    public static void App() {
         //LEISE AM AUSRASTEN
 
 
+        cm = JsonConversionTherapy.jsonConversion();
+
+        launch();
+    }
+
+    @Override
+    public void start(Stage stage) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("CharacterDynamic.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 400);
 
 
-        try (InputStream inputStream = Main.class.getResourceAsStream( "/sample.character/character3.json")) {
-            if (inputStream == null) {
-                System.out.println("Resource not found...");
-            }
 
-            // Read the resource content into a string
-            String jsonContent = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-            CharacterMorbit c = CharacterFileHandler.getCharacter(jsonContent);
-            JSONObject jObj= CharacterFileHandler.getJSON(c);
+            CharacterDynamicController cdc = fxmlLoader.getController();
+            cdc.setCharacter(cm);
+            cdc.displayList();
 
-            String cJSON = jObj.toString(4);
-
-            CharacterMorbit c2 = CharacterFileHandler.getCharacter(cJSON);
-
-            System.out.println(c2);
+            stage.setTitle(cm.getName());
+            stage.setScene(scene);
+            stage.show();
 
 
-            // Use jsonContent as needed
-        } catch (Exception e) {
+        } catch(IOException e){
             e.printStackTrace();
         }
-
-
-
 
     }
 }

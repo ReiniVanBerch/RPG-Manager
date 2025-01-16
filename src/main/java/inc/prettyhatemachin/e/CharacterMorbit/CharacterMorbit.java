@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 
 public class CharacterMorbit {
-
+    ArrayList<Quality> qualities = new ArrayList<>();
     public CharacterMorbit(String name) {
         this.name = name.strip();
     }
@@ -40,11 +40,19 @@ public class CharacterMorbit {
         this.name = name.strip();
     }
 
-    ArrayList<Quality> qualities = new ArrayList<>();
-    public ArrayList<Quality> getQualities() { return qualities; }
 
-    public <T extends Quality> void addProperty(T property) {
-        qualities.add(property);
+
+    public ArrayList<Quality> getQualities() { return qualities; }
+    public ArrayList<String> getQualitiesAsString() {
+        ArrayList<String> qualitiesAsString = new ArrayList<>();
+        for (Quality q : this.qualities) {
+            qualitiesAsString.add(q.getComment());
+        }
+        return qualitiesAsString;
+    }
+
+    public <T extends Quality> void addQuality(T qualitiy) {
+        qualities.add(qualitiy);
     }
 
     @Override
