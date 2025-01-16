@@ -13,11 +13,11 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {
             // Lade die FXML-Datei
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("startseite.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LandingPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 400);
 
             // CSS hinzufügen
-            scene.getStylesheets().add(Main.class.getResource("styles.css").toExternalForm());
+            scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
 
             // Controller holen und Stage setzen
             StartseiteController controller = fxmlLoader.getController();
