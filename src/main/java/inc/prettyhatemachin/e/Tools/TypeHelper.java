@@ -115,5 +115,12 @@ public class TypeHelper {
 
     }
 
+    public static String getTypingAsString(int typeNumber){
+        String qual, data;
+        qual = getQuality(typeNumber).getSimpleName();
+        data = getDataType(typeNumber).getSimpleName();
+        return data + " - " + qual;
+    }
+
 
 }

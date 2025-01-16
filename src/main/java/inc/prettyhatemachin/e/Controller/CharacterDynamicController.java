@@ -2,6 +2,7 @@ package inc.prettyhatemachin.e.Controller;
 
 import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
 import inc.prettyhatemachin.e.Quality.Quality;
+import inc.prettyhatemachin.e.Tools.TypeHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,9 +22,14 @@ public class CharacterDynamicController {
 
     @FXML
     private ListView<String> qualityList;
+    @FXML
+    private ListView<String> qualityValuesList;
+
 
     @FXML
-    private Label qualityLabel;
+    private Label qualityCommentLabel;
+    @FXML
+    private Label qualityTypeLabel;
 
 
     @FXML
@@ -46,13 +52,18 @@ public class CharacterDynamicController {
     public void loadQuality(){
         int index = qualityList.getSelectionModel().getSelectedIndex();
         this.currentQuality = this.character.getQualities().get(index);
-        qualityLabel.setText(this.currentQuality.getComment());
+
+        qualityCommentLabel.setText(this.currentQuality.getComment());
+        qualityTypeLabel.setText(TypeHelper.getTypingAsString(this.currentQuality.getTypeNumber()));
+
+        ArrayList<String> valuesAsString = new ArrayList<>();
+
+        for(Object value : this.currentQuality.getValues()){
+            valuesAsString.add(value.toString());
+        }
+        qualityValuesList.setItems(FXCollections.observableArrayList(valuesAsString));
     }
 
-    @FXML
-    public void processValue(){
-        qualityList.getSelectionModel().select(0);
-    }
 
     public CharacterMorbit getCharacter() {return character;}
     public void setCharacter(CharacterMorbit character) {this.character = character;}

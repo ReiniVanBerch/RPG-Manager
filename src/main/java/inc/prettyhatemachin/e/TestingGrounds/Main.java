@@ -14,33 +14,51 @@ import javafx.stage.Stage;
 import inc.prettyhatemachin.e.App.App;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application{
     private static CharacterMorbit cm;
     public static void App() {
         //LEISE AM AUSRASTEN
 
+        System.out.println("Launching 1");
+        cm = JsonConversionTherapy.getTestcharacter();
+        launch();
 
+        System.out.println("Launching 2");
         cm = JsonConversionTherapy.jsonConversion();
-
         launch();
     }
 
     @Override
     public void start(Stage stage) {
+        CharacterMorbit cm;
+        ArrayList<Stage> stages = new ArrayList<>();
+        ArrayList<FXMLLoader> loaders = new ArrayList<>();
+        ArrayList<CharacterDynamicController> controllers = new ArrayList<>();
+
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("CharacterDynamic.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 400);
+            for (int i = 0; i < 3; i++) {
+                stages.add(stage);
+
+                cm = JsonConversionTherapy.getTestcharacter();
+
+                loaders.add(new FXMLLoader(App.class.getResource("CharacterDynamic.fxml")));
+                Scene scene = new Scene(loaders.get(i).load(), 800, 400);
+
+                CharacterDynamicController cdc = loaders.get(i).getController();
+                cdc.setCharacter(cm);
+                cdc.displayList();
+
+                controllers.add(cdc);
 
 
+                System.out.println("Opening... " + i + " : " + cm.getName());
+                stages.get(i).setTitle(cm.getName());
+                stages.get(i).setScene(scene);
+                stages.get(i).show();
+            }
 
-            CharacterDynamicController cdc = fxmlLoader.getController();
-            cdc.setCharacter(cm);
-            cdc.displayList();
-
-            stage.setTitle(cm.getName());
-            stage.setScene(scene);
-            stage.show();
 
 
         } catch(IOException e){
