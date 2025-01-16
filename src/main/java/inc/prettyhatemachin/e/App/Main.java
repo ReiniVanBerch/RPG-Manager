@@ -1,5 +1,6 @@
 package inc.prettyhatemachin.e.App;
 
+import inc.prettyhatemachin.e.Controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,7 +21,7 @@ public class Main extends Application {
             scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
 
             // Controller holen und Stage setzen
-            StartseiteController controller = fxmlLoader.getController();
+            MainController controller = fxmlLoader.getController();
             controller.setStage(stage);
 
             // Titel setzen und anzeigen

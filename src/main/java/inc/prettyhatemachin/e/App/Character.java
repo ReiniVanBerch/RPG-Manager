@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Character {
@@ -94,6 +95,25 @@ public class Character {
         items.add(new SimpleStringProperty(newitems));
     }
 
+
+
+    public static void saveCharacter(Character object, String filename) {
+        try (FileOutputStream fos = new FileOutputStream(filename);
+            ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(object);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static Character loadCharacter(String filename) {
+        try (FileInputStream fis = new FileInputStream(filename);
+            ObjectInputStream ois = new ObjectInputStream(fis)) {
+            return (Character) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Fehler beim Laden: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
     /*
 
 List <> sachen
