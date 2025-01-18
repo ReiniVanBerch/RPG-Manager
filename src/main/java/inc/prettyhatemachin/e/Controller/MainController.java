@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -34,7 +35,8 @@ public class MainController {
     private Button loadchar;
     @FXML
     private Button newchar;
-
+    @FXML
+    private MenuItem about;
 
     @FXML
     public void initialize(){
@@ -69,6 +71,19 @@ public class MainController {
                 throw new RuntimeException(e);
             }
         });
+        about.setOnAction(event ->
+                {
+                    try {
+                        Alert aboutal = new Alert(AlertType.NONE,"This is a program written by a the individual programmers of the Team BTS ka OS, in the spirit of game programmers, leaving bugs for everyone to find and lots of open point upon early release. " +
+                                "There is no bugfinding fee, the hidden 'feature' was ready before the rest of the program, so our priorities were a little screwed up. Thank god we are not programmers in an atomic powerplant (c)2024 Pretty Hate Machin.e " ,ButtonType.OK);
+                        aboutal.setTitle("About this program");
+                        aboutal.setHeaderText("Gametracker by Pretty Hate Machin.e (Team BTS ka OS)");
+                        aboutal.showAndWait();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+        );
 
 
     }
