@@ -11,7 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import inc.prettyhatemachin.e.App.App;
+import inc.prettyhatemachin.e.App.CharDisplay;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class Main extends Application{
 
                 cm = JsonConversionTherapy.getTestcharacter();
 
-                loaders.add(new FXMLLoader(App.class.getResource("CharacterDynamic.fxml")));
+                loaders.add(new FXMLLoader(CharDisplay.class.getResource("CharacterDynamic.fxml")));
                 Scene scene = new Scene(loaders.get(i).load(), 800, 400);
 
                 CharacterDynamicController cdc = loaders.get(i).getController();

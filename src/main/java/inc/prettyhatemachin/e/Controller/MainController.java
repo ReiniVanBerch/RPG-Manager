@@ -1,5 +1,6 @@
 package inc.prettyhatemachin.e.Controller;
 
+import inc.prettyhatemachin.e.App.CharDisplay;
 import inc.prettyhatemachin.e.App.Character;
 import inc.prettyhatemachin.e.App.Help;
 import javafx.event.ActionEvent;
@@ -59,12 +60,15 @@ public class MainController {
             }
         });
         loadchar.setOnAction(event ->
-                loadCharacter()
-
-
-
-
-        );
+        {
+            try {
+                CharDisplay help = new CharDisplay();
+                Stage charstage = new Stage();
+                help.start(charstage);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
 
 
     }
@@ -84,6 +88,17 @@ public class MainController {
     private void loadCharacter() {
         // Erstellt einen FileChooser zum Auswählen der JSON-Datei
         Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
+        {
+            try {
+//                CharacterStaticController csc = new CharacterStaticController(character1);
+//                Stage charpstage = new Stage();
+                CharDisplay.launch();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
         new CharacterStaticController(character1);
         /*
         FileChooser fileChooser = new FileChooser();
