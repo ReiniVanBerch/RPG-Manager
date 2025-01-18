@@ -11,7 +11,7 @@ import javafx.beans.property.StringProperty;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Character {
+public class Character implements Serializable {
 
 
 
@@ -29,7 +29,7 @@ public class Character {
         public ChangingValue constitution_value;
         public ChangingValue strength_value;
 
-        public Character(String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
+        public Character (String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
             this.name = new SimpleStringProperty(name);
             this.health = new SimpleIntegerProperty(health);
             this.constitution = new SimpleIntegerProperty(constitution);
@@ -98,14 +98,14 @@ public class Character {
 
 
     public static void saveCharacter(Character object, String filename) {
-        try (FileOutputStream fos = new FileOutputStream(filename);
+            try (FileOutputStream fos = new FileOutputStream(filename);
             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(object);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public static Character loadCharacter(String filename) {
+    public static Character loadChar(String filename) {
         try (FileInputStream fis = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (Character) ois.readObject();

@@ -1,4 +1,4 @@
-package inc.prettyhatemachin.e.TestingGrounds;
+package inc.prettyhatemachin.e.App;
 
 import javafx.application.Application;
 import javafx.scene.Group;

@@ -1,9 +1,14 @@
 package inc.prettyhatemachin.e.Controller;
 
 import inc.prettyhatemachin.e.App.Character;
+import inc.prettyhatemachin.e.App.Help;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -12,12 +17,56 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static inc.prettyhatemachin.e.App.Character.loadChar;
+
 public class MainController {
 
     private Stage stage;
+    @FXML
+    private MenuItem downbutton;
+    @FXML
+    private Button exit;
+    @FXML
+    private MenuItem exit2;
+    @FXML
+    private Button loadchar;
+    @FXML
+    private Button newchar;
+
+
+    @FXML
+    public void initialize(){
+        exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                exit.setOnMouseClicked(event ->
+                        exit());
+
+            }
+        });
+        exit2.setOnAction(event ->
+                        exit());
+
+        downbutton.setOnAction(event ->
+        {
+            try {
+                Help help = new Help();
+                Stage helpstage = new Stage();
+                help.start(helpstage);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        loadchar.setOnAction(event ->
+                loadCharacter()
 
 
 
+
+        );
+
+
+    }
     // Methode zum Anzeigen der Charaktere
     @FXML
     private void showCharacters() {
@@ -31,36 +80,36 @@ public class MainController {
 
     // Methode zum Laden einer JSON-Datei
     @FXML
-    private Character loadCharacter(Path path) throws IOException{
+    private void loadCharacter() {
         // Erstellt einen FileChooser zum Auswählen der JSON-Datei
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.ser"));
         File file = fileChooser.showOpenDialog(stage);
+
         if (file != null) {
-            try {
-                // Liest den Inhalt der ausgewählten Datei
-                Character char1 = loadCharacter((Paths.get(file.getAbsolutePath())));
-                // Verarbeite die JSON-Datei (hier nur eine Informationsmeldung)
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("JSON-Datei geladen");
-                alert.setHeaderText(null);
-                alert.setContentText("JSON-Datei erfolgreich geladen!");
-                alert.showAndWait();
-            } catch (IOException e) {
-                // Zeigt eine Fehlermeldung an, wenn die Datei nicht geladen werden kann
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Fehler");
-                alert.setHeaderText(null);
-                alert.setContentText("Fehler beim Laden der Datei!");
-                alert.showAndWait();
-            }
+
+            // Liest den Inhalt der ausgewählten Datei
+            Character char1 = loadChar(file.getAbsolutePath());
+            // Verarbeite die JSON-Datei (hier nur eine Informationsmeldung)
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("JSON-Datei geladen");
+            alert.setHeaderText(null);
+            alert.setContentText("JSON-Datei erfolgreich geladen!");
+            alert.showAndWait();
+            new CharacterStaticController(char1);
+
+
+        }else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setContentText("JSON-Datei erfolgreich geladen!");
         }
-        return null;
+
+
     }
 
     // Methode zum Beenden des Spiels
     @FXML
-    private void exitGame() {
+    private void exit() {
         // Beendet die Anwendung
         System.exit(0);
     }
