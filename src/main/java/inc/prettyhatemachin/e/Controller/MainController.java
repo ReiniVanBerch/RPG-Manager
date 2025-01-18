@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import static inc.prettyhatemachin.e.App.Character.loadChar;
 
@@ -82,6 +83,9 @@ public class MainController {
     @FXML
     private void loadCharacter() {
         // Erstellt einen FileChooser zum Auswählen der JSON-Datei
+        Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
+        new CharacterStaticController(character1);
+        /*
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.ser"));
         File file = fileChooser.showOpenDialog(stage);
@@ -96,14 +100,15 @@ public class MainController {
             alert.setHeaderText(null);
             alert.setContentText("JSON-Datei erfolgreich geladen!");
             alert.showAndWait();
-            new CharacterStaticController(char1);
+            Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
+            new CharacterStaticController(character1);
 
 
         }else {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setContentText("JSON-Datei erfolgreich geladen!");
         }
-
+*/
 
     }
 

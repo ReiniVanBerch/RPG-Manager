@@ -21,8 +21,8 @@ public class App extends Application {
         Character character1, character2;
         character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
         character2 = new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}});
-        Character.saveCharacter(character1, "src/main/resources/sample.character/character1.ser");
-        Character.saveCharacter(character2, "src/main/resources/sample.character/character2.ser");
+        //Character.saveCharacter(character1, "src/main/resources/sample.character/character1.ser");
+        //Character.saveCharacter(character2, "src/main/resources/sample.character/character2.ser");
         CharacterStaticController csc = new CharacterStaticController(character1);
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("CharacterStatic.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 400);
