@@ -1,6 +1,12 @@
 package inc.prettyhatemachin.e.Tools;
 
-
+/**
+ * @author Morbit
+ * 0.1.3
+ *
+ *  PURPOSE:
+ *  This file converts json files to a chacter if possible, and converts character back to json.
+ */
 
 import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
 import inc.prettyhatemachin.e.Quality.Quality;

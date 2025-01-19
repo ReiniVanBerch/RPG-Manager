@@ -1,5 +1,17 @@
 package inc.prettyhatemachin.e.Controller;
 
+/**
+ * @author Morbit
+ * @version 0.1.1
+ *
+ * PURPOSE:
+ * This is the controller for the window with completely dynamic characters.
+ *
+ * Left are the qualities of the character listed, in the mid are the values associated with that quality
+ * and right might be a way to edit the quality, depending on the specifics of the quality.
+ *
+ */
+
 import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
 import inc.prettyhatemachin.e.Quality.Quality;
 import inc.prettyhatemachin.e.Tools.TypeHelper;

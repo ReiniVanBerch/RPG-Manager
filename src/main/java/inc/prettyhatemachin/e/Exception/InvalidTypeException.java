@@ -13,4 +13,22 @@ public class InvalidTypeException extends Exception {
 
     }
 
+    public InvalidTypeException(String message, int typeNumber){
+
+        this();
+        String output = InvalidTypeExceptionHelper(message, typeNumber);
+    }
+
+    public String InvalidTypeExceptionHelper(String message, int typeNumber){
+        String output = "";
+        int qualityInt = typeNumber % 16;
+        int typeInt = typeNumber / 16;
+
+        if (qualityInt == 0xF){ output += "There is something wrong in the quality of this..." + System.lineSeparator();}
+        if (typeInt == 0xF){ output += "There is something wrong in the datatype of this..." + System.lineSeparator();}
+
+        return output;
+    }
+
+
 }

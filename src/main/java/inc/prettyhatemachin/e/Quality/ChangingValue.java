@@ -1,5 +1,17 @@
 package inc.prettyhatemachin.e.Quality;
 
+/**
+ * @author Morbit
+ * @version 0.1.2
+ *
+ * PURPOSE:
+ * The changing value is for a not fixated value.
+ * There is no real lower or upper bound to this value, just the idea, that it is not fixed.
+ *
+ * EXAMPLES:
+ * A list of items, number of kills, total damage taken, other statistics.
+ */
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;

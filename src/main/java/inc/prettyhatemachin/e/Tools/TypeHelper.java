@@ -8,7 +8,8 @@ package inc.prettyhatemachin.e.Tools;
  * Revamped comment and sent type explanation to {@link inc.prettyhatemachin.e.Quality.Quality}
  *
  * PURPOSE:
-
+ * This file helps with dealing with typing, both quality and datatype.
+ * There are different methods for different use cases.
  *
  *
  */

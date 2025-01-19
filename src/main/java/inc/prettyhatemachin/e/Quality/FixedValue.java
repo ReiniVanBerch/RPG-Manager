@@ -1,5 +1,20 @@
 package inc.prettyhatemachin.e.Quality;
 
+/**
+ * @author Morbit
+ * @version 0.1.2
+ *
+ * PURPOSE:
+ * This is meant for a fixed value, never meant to be changed.
+ *
+ * EXAMPLES:
+ * Statistics in some TTRPG games as:
+ * Netrunners Hacking in CyP Red
+ * CoC statistics.
+ *
+ *
+ */
+
 import inc.prettyhatemachin.e.Tools.TypeHelper;
 
 import java.lang.reflect.Constructor;
