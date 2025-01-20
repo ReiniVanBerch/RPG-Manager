@@ -7,10 +7,12 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Character implements Serializable {
 
@@ -110,7 +112,7 @@ public class Character implements Serializable {
                 .put("items", object.getItems())
                         .toString();
 
-        System.out.println(jsonString);
+        //System.out.println(jsonString);
 
             try (FileOutputStream fos = new FileOutputStream(filename);
             ) {
@@ -120,13 +122,25 @@ public class Character implements Serializable {
         }
     }
     public static Character loadChar(String filename) {
-        try (FileInputStream fis = new FileInputStream(filename);
-            ObjectInputStream ois = new ObjectInputStream(fis)) {
-            return (Character) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Fehler beim Laden: " + e.getMessage());
+
+        try {
+            InputStream fis = new FileInputStream(filename);
+            String jsoninstring = Arrays.toString(fis.readAllBytes());
+            JSONObject json = new JSONObject(jsoninstring);
+            JSONArray array1 = json.getJSONArray("items");
+            ArrayList<String> itemlist = new ArrayList(array1.length());
+            for(int i=0;i < array1.length();i++){
+                itemlist.add(array1.getJSONObject(i).toString());
+            }
+            Character loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist);
+            return loaded;
+        } catch (IOException e) {
             throw new RuntimeException(e);
+
+
         }
+
+
     }
     /*
 
