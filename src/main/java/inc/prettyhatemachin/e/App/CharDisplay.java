@@ -22,7 +22,7 @@ public class CharDisplay extends Application {
         character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
         character2 = new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}});
         Character.saveCharacter(character1, "src/main/resources/sample.character/character1.json");
-        //Character.saveCharacter(character2, "src/main/resources/sample.character/character2.ser");
+        //Character.loadChar("src/main/resources/sample.character/character1.json");
         CharacterStaticController csc = new CharacterStaticController(character1);
         FXMLLoader fxmlLoader = new FXMLLoader(CharDisplay.class.getResource("CharacterStatic.fxml"));
         fxmlLoader.setController(csc);

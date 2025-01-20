@@ -54,7 +54,7 @@ public class MainController {
         downbutton.setOnAction(event ->
         {
             try {
-                Help help = new Help();
+                                Help help = new Help();
                 Stage helpstage = new Stage();
                 help.start(helpstage);
             } catch (Exception e) {
@@ -64,8 +64,13 @@ public class MainController {
         loadchar.setOnAction(event ->
         {
             try {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.json"));
+                File selectedFile = fileChooser.showOpenDialog(stage);
+                Character load = Character.loadChar(selectedFile.toString());
                 CharDisplay help = new CharDisplay();
                 Stage charstage = new Stage();
+                charstage.setUserData(load);
                 help.start(charstage);
             } catch (Exception e) {
                 throw new RuntimeException(e);

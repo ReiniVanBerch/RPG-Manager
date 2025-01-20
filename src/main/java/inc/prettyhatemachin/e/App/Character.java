@@ -11,6 +11,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -124,9 +127,10 @@ public class Character implements Serializable {
     public static Character loadChar(String filename) {
 
         try {
-            InputStream fis = new FileInputStream(filename);
-            String jsoninstring = Arrays.toString(fis.readAllBytes());
+            InputStream fis = Files.newInputStream(Path.of(filename));
+            String jsoninstring = new String(fis.readAllBytes(), StandardCharsets.UTF_8);
             JSONObject json = new JSONObject(jsoninstring);
+
             JSONArray array1 = json.getJSONArray("items");
             ArrayList<String> itemlist = new ArrayList(array1.length());
             for(int i=0;i < array1.length();i++){
