@@ -7,6 +7,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -72,8 +73,11 @@ public class Character implements Serializable {
         }
 
         public ArrayList<String> getItems() {
-            //return items;
-            return new ArrayList<>();
+            ArrayList<String> result = new ArrayList<>();
+            for (StringProperty itms : this.itemsProperty()){
+                result.add(itms.toString());
+            }
+            return result;
         }
 
     public ArrayList<StringProperty> itemsProperty() {
@@ -98,9 +102,19 @@ public class Character implements Serializable {
 
 
     public static void saveCharacter(Character object, String filename) {
+        String jsonString = new JSONObject()
+                .put("name", object.getName())
+                .put("health", object.getHealth())
+                .put("constitution", object.getConstitution())
+                .put("strength", object.getStrength())
+                .put("items", object.getItems())
+                        .toString();
+
+        System.out.println(jsonString);
+
             try (FileOutputStream fos = new FileOutputStream(filename);
-            ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(object);
+            ) {
+            fos.write(jsonString.getBytes());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
