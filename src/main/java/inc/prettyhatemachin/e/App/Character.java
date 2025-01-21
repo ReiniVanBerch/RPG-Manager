@@ -85,7 +85,7 @@ public class Character {
         public ArrayList<String> getItems() {
             ArrayList<String> result = new ArrayList<>();
             for (StringProperty itms : this.itemsProperty()){
-                result.add(itms.toString());
+                result.add(itms.get());
             }
             return result;
         }

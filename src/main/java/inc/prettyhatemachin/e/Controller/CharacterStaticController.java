@@ -12,8 +12,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
-
+import java.io.File;
 import java.util.ArrayList;
 
 public class CharacterStaticController {
@@ -25,10 +26,14 @@ public class CharacterStaticController {
     @FXML
     private TextField characterNameField;
 
+
+    //health has range 0-100 ->  numbers>100 will be set to 100, numbers<0 to 0
     private IntegerProperty characterHealth = new SimpleIntegerProperty(0);
 
+    //health has range 0-100 ->  numbers>100 will be set to 100, numbers<0 to 0
     private IntegerProperty characterConstitution = new SimpleIntegerProperty(0);
 
+    //health has range 0-25 ->  numbers>25 will be set to 25, numbers<0 to 0
     private IntegerProperty characterStrength = new SimpleIntegerProperty(0);
 
     @FXML
@@ -47,21 +52,16 @@ public class CharacterStaticController {
     private ProgressBar progressBarCharacteristic4;
 
     @FXML
-    public TextField healthNumberField;
+    private TextField healthNumberField;
 
     @FXML
-    public TextField constitutionNumberField;
+    private TextField constitutionNumberField;
 
     @FXML
     public TextField strengthNumberField;
 
     @FXML
-    public TextField characteristic4NumberField;
-
-
-
-
-
+    private TextField characteristic4NumberField;
 
     public CharacterStaticController(){
 
@@ -80,9 +80,15 @@ public class CharacterStaticController {
 
         if (character != null) {
             characterName.set(character.getName());
-            characterHealth.set(character.getHealth());
-            characterConstitution.set(character.getConstitution());
-            characterStrength.set(character.getStrength());
+            characterHealth.set(Math.max(0, Math.min(character.getHealth(), 100))); //ensures in bounds
+            characterConstitution.set(Math.max(0, Math.min(character.getConstitution(), 100)));
+            characterStrength.set(Math.max(0, Math.min(character.getStrength(), 25)));
+
+            //in case values were changed
+            character.setHealth(characterHealth.get());
+            character.setConstitution(characterConstitution.get());
+            character.setStrength(characterStrength.get());
+
 
             //bind value to textfields
             if (characterNameField != null) {
@@ -107,9 +113,12 @@ public class CharacterStaticController {
                 //characteristic4NumberField.textProperty().bind();
             }
 
+            showItems();
+            updateProgressBarConstitution();
+            updateProgressBarStrength();
+            updateProgressBarHealth();
+            updateProgressBarCharacteristic4();
 
-            ObservableList<String> observable = FXCollections.observableArrayList(character.getItems());
-            this.items = new ListView<>(observable);
         }
     }
 
@@ -129,6 +138,8 @@ public class CharacterStaticController {
         updateProgressBarHealth();
         updateProgressBarConstitution();
         updateProgressBarStrength();
+        showItems();
+
         //updateProgressBarCharacteristic4(); - not implemented
 
     }
@@ -140,13 +151,22 @@ public class CharacterStaticController {
 
     }
 
+    public void showItems() {
+        if (character != null && items != null) {
+
+            ObservableList<String> observable = FXCollections.observableArrayList(character.getItems());
+            items.setItems(observable);
+        }
+    }
+
     @FXML
     private void increaseOneHealth () {
         if (character.healthProperty().get() < 100) {
             character.healthProperty().set(character.getHealth() + 1);
-            characterHealth.set(character.getHealth());
+        } else {
+            character.setHealth(100);
         }
-
+        characterHealth.set(character.getHealth());
         updateProgressBarHealth();
 
         //TODO: celebration gif if 100?
@@ -156,9 +176,10 @@ public class CharacterStaticController {
     private void decreaseOneHealth() {
         if (character.healthProperty().get() > 0) {
             character.healthProperty().set(character.getHealth() - 1);
-            characterHealth.set(character.getHealth());
+        } else {
+            character.setHealth(0);
         }
-
+        characterHealth.set(character.getHealth());
         updateProgressBarHealth();
 
         //TODO: death simulation if 0?
@@ -175,8 +196,10 @@ public class CharacterStaticController {
     private void increaseOneConstitution() {
         if (character.constitutionProperty().get() < 100) {
             character.constitutionProperty().set(character.getConstitution() + 1);
-            characterConstitution.set(character.getConstitution());
+        } else {
+            character.setConstitution(100);
         }
+        characterConstitution.set(character.getConstitution());
         updateProgressBarConstitution();
     }
 
@@ -184,9 +207,10 @@ public class CharacterStaticController {
     private void decreaseOneConstitution() {
         if (character.constitutionProperty().get() > 0) {
             character.constitutionProperty().set(character.getConstitution() - 1);
-            characterConstitution.set(character.getConstitution());
+        } else {
+            character.setConstitution(100);
         }
-
+        characterConstitution.set(character.getConstitution());
         updateProgressBarConstitution();
     }
 
@@ -198,11 +222,12 @@ public class CharacterStaticController {
 
     @FXML
     private void increaseOneStrength() {
-        if (character.strengthProperty().get() < 100) {
+        if (character.strengthProperty().get() < 25) {
             character.strengthProperty().set(character.getStrength() + 1);
-            characterStrength.set(character.getStrength());
+        } else {
+            character.setStrength(25);
         }
-
+        characterStrength.set(character.getStrength());
         updateProgressBarStrength();
     }
 
@@ -210,15 +235,16 @@ public class CharacterStaticController {
     private void decreaseOneStrength() {
         if (character.strengthProperty().get() > 0) {
             character.strengthProperty().set(character.getStrength() - 1);
-            characterStrength.set(character.getStrength());
+        } else {
+            character.setStrength(0);
         }
-
+        characterStrength.set(character.getStrength());
         updateProgressBarStrength();
     }
 
     @FXML
     public void updateProgressBarStrength() {
-        progressBarStrength.setProgress(characterStrength.get()/100.0);
+        progressBarStrength.setProgress(characterStrength.get()/25.0);
     }
 
 
@@ -237,6 +263,18 @@ public class CharacterStaticController {
     //TODO: needs to be called after each button click of said characteristic
     @FXML
     public void updateProgressBarCharacteristic4() {
+
+    }
+
+    //Save Button
+
+    @FXML
+    public void saveFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
+        File selectedFile = fileChooser.showOpenDialog(healthNumberField.getScene().getWindow());
+        //fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "\build\resources\main\sample.character"));
+        Character.saveCharacter(character,selectedFile.toString());
 
     }
 

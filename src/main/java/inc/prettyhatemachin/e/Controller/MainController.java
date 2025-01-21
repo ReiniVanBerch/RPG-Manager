@@ -260,7 +260,7 @@ public class MainController {
     // Methode zum Beenden des Spiels
     @FXML
     private void exit() {
-        // Beendet die Anwendung
+        // by by
         System.exit(0);
     }
 
