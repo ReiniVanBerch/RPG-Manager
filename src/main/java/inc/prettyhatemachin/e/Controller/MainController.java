@@ -64,13 +64,13 @@ public class MainController {
         loadchar.setOnAction(event ->
         {
             try {
-                FileChooser fileChooser = new FileChooser();
+               /* FileChooser fileChooser = new FileChooser();
                 fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.json"));
                 File selectedFile = fileChooser.showOpenDialog(stage);
-                Character load = Character.loadChar(selectedFile.toString());
+                Character load = Character.loadChar(selectedFile.toString());*/
                 CharDisplay help = new CharDisplay();
                 Stage charstage = new Stage();
-                charstage.setUserData(load);
+                //charstage.setUserData(load);
                 help.start(charstage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -119,7 +119,7 @@ public class MainController {
         }
 
 
-        new CharacterStaticController(character1);
+        //new CharacterStaticController(character1);
         /*
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.ser"));

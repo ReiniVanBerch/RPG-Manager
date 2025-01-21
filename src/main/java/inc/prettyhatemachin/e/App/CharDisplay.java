@@ -23,10 +23,16 @@ public class CharDisplay extends Application {
         character2 = new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}});
         Character.saveCharacter(character1, "src/main/resources/sample.character/character1.json");
         //Character.loadChar("src/main/resources/sample.character/character1.json");
-        CharacterStaticController csc = new CharacterStaticController(character1);
+
         FXMLLoader fxmlLoader = new FXMLLoader(CharDisplay.class.getResource("CharacterStatic.fxml"));
-        fxmlLoader.setController(csc);
-        Scene scene = new Scene(fxmlLoader.load(), 800, 400);
+        //fxmlLoader.setController(csc);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        CharacterStaticController csc = fxmlLoader.getController();
+        csc.setCharacter(character1);
+
+        // CSS hinzufügen
+        scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
+
         stage.setTitle("My Simple \"Game Tracker\"");
         stage.setScene(scene);
         stage.show();

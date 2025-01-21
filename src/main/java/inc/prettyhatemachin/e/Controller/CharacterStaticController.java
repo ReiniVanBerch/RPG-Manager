@@ -15,25 +15,21 @@ import java.util.ArrayList;
 
 public class CharacterStaticController {
 
-    private final Character character;
+    private Character character;
 
-    @FXML
-    private final StringProperty characterName;
+    private StringProperty characterName;
 
     @FXML
     private TextField characterNameField;
 
-    @FXML
-    private final IntegerProperty characterHealth;
+    private IntegerProperty characterHealth;
+
+    private IntegerProperty characterConstitution;
+
+    private IntegerProperty characterStrength;
 
     @FXML
-    private final IntegerProperty characterConstitution;
-
-    @FXML
-    private final IntegerProperty characterStrength;
-
-    @FXML
-    private final ListView<String> items;
+    private ListView<String> items;
 
     @FXML
     private ProgressBar progressBarHealth;
@@ -52,23 +48,43 @@ public class CharacterStaticController {
 
 
 
-    public CharacterStaticController(Character character){
-        this.character = character;
+    public CharacterStaticController(){
 
-        characterName = character.nameProperty();
+
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+        /*characterName.set = character.nameProperty();
         characterHealth = character.healthProperty();
         characterConstitution = character.constitutionProperty();
         characterStrength = character.strengthProperty();
 
         ObservableList<String> observable = FXCollections.observableArrayList(character.getItems());
-        this.items = new ListView<>(observable);
+        this.items = new ListView<>(observable);*/
+
+        if (character != null) {
+            characterName.set(character.getName());
+            characterHealth.set(character.getHealth());
+            characterConstitution.set(character.getConstitution());
+            characterStrength.set(character.getStrength());
+
+            // Reflect changes in the TextField
+            if (characterNameField != null) {
+                characterNameField.textProperty().bindBidirectional(characterName);
+            }
+
+            ObservableList<String> observable = FXCollections.observableArrayList(character.getItems());
+            this.items = new ListView<>(observable);
+        }
     }
 
     @FXML
-    public void initialise() {
+    public void initialize() {
         //other stuff
 
 
+        setCharacterName();
         //then
         updateProgressBarHealth();
         updateProgressBarConstitution();
@@ -79,7 +95,10 @@ public class CharacterStaticController {
 
     //TODO: gets called in initialise()
     public void setCharacterName() {
-        characterNameField.setText(characterName.getName());
+        if (characterName != null) {
+            characterNameField.setText(characterName.getName());
+        }
+
     }
 
     @FXML
@@ -106,7 +125,7 @@ public class CharacterStaticController {
 
     }
     
-    //TODO: needs to be called after each button click of said characteristic
+
     @FXML
     public void updateProgressBarHealth() {
         progressBarHealth.setProgress(characterHealth.getValue());
@@ -130,7 +149,7 @@ public class CharacterStaticController {
         updateProgressBarConstitution();
     }
 
-    //TODO: needs to be called after each button click of said characteristic
+
     @FXML
     public void updateProgressBarConstitution() {
         progressBarConstitution.setProgress(characterConstitution.getValue());
@@ -154,7 +173,6 @@ public class CharacterStaticController {
         updateProgressBarStrength();
     }
 
-    //TODO: needs to be called after each button click of said characteristic
     @FXML
     public void updateProgressBarStrength() {
         progressBarStrength.setProgress(characterStrength.getValue());
