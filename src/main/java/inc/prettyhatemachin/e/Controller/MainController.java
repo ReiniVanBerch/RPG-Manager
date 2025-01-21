@@ -15,12 +15,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.util.ArrayList;
 
-import static inc.prettyhatemachin.e.App.Character.loadChar;
+
 
 public class MainController {
 
@@ -65,7 +63,7 @@ public class MainController {
         {
             try {
                 FileChooser fileChooser = new FileChooser();
-                fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.json"));
+                fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
                 File selectedFile = fileChooser.showOpenDialog(stage);
                 Character load = Character.loadChar(selectedFile.toString());
                 CharDisplay help = new CharDisplay();
@@ -92,40 +90,12 @@ public class MainController {
 
 
     }
-    // Methode zum Anzeigen der Charaktere
-    @FXML
-    private void showCharacters() {
-        // Zeigt eine Informationsmeldung an
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Charaktere");
-        alert.setHeaderText(null);
-        alert.setContentText("Charaktere werden angezeigt!");
-        alert.showAndWait();
-    }
-
-    // Methode zum Laden einer JSON-Datei
-    @FXML
-    private void loadCharacter() {
-        // Erstellt einen FileChooser zum Auswählen der JSON-Datei
-        Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
-        {
-            try {
-//                CharacterStaticController csc = new CharacterStaticController(character1);
-//                Stage charpstage = new Stage();
-                CharDisplay.launch();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
 
 
-
-    }
-
-    // Methode zum Beenden des Spiels
+    // Quit Button
     @FXML
     private void exit() {
-        // Beendet die Anwendung
+        // by by
         System.exit(0);
     }
 

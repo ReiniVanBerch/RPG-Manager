@@ -14,17 +14,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class CharDisplay extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
         Character character1 =(Character) stage.getUserData();
         //character2 = new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}});
-        //Character.saveCharacter(character1, "src/main/resources/sample.character/character1.json");
-        //character2 = Character.loadChar("src/main/resources/sample.character/character1.json");
+        // character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(CharDisplay.class.getResource("CharacterStatic.fxml"));
-        //fxmlLoader.setController(csc);
+
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         CharacterStaticController csc = fxmlLoader.getController();
         csc.setCharacter(character1);
@@ -39,6 +40,5 @@ public class CharDisplay extends Application {
 
     public static void main(String[] args) throws IOException {
         launch();
-        //inc.prettyhatemachin.e.TestingGrounds.Main.init();
     }
 }
