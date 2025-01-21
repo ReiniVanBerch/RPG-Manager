@@ -1,4 +1,4 @@
-package inc.prettyhatemachin.e.CharacterMorbit;
+package inc.prettyhatemachin.e.CharacterDynamic;
 
 import inc.prettyhatemachin.e.Quality.*;
 import java.util.ArrayList;
@@ -20,13 +20,13 @@ import java.util.ArrayList;
  */
 
 
-public class CharacterMorbit {
+public class CharacterDynamic {
     ArrayList<Quality> qualities = new ArrayList<>();
-    public CharacterMorbit(String name) {
+    public CharacterDynamic(String name) {
         this.name = name.strip();
     }
 
-    public CharacterMorbit(String name, ArrayList<Quality> qualities) {
+    public CharacterDynamic(String name, ArrayList<Quality> qualities) {
         this(name);
         this.qualities = qualities;
     }
@@ -41,6 +41,13 @@ public class CharacterMorbit {
     }
 
 
+    public void setQualities (ArrayList<Quality> qualities){
+        this.qualities = qualities;
+    }
+
+    public void setQuality (int index, Quality quality){
+        this.qualities.set(index, quality);
+    }
 
     public ArrayList<Quality> getQualities() { return qualities; }
     public ArrayList<String> getQualitiesAsString() {

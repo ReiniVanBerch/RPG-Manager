@@ -11,6 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
+
 import java.util.ArrayList;
 
 public class CharacterStaticController {

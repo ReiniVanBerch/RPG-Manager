@@ -1,12 +1,13 @@
 package inc.prettyhatemachin.e.TestingGrounds;
 
 /*----------------------------------------------------------------------------------------
- * Copyright (c) Morbit Corporation. All rights reserved.
+ * Copyright (c) BTS kA OS Corporation. All rights reserved.
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  *---------------------------------------------------------------------------------------*/
 
-import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
+import inc.prettyhatemachin.e.CharacterDynamic.CharacterDynamic;
 import inc.prettyhatemachin.e.Controller.CharacterDynamicController;
+import inc.prettyhatemachin.e.FuneralPyre.JsonConversionTherapy;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,28 +18,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main extends Application{
-    private static CharacterMorbit cm;
+    private static CharacterDynamic cm;
     public static void App() {
         //LEISE AM AUSRASTEN
 
-        System.out.println("Launching 1");
-        cm = JsonConversionTherapy.getTestcharacter();
-        launch();
-
-        System.out.println("Launching 2");
-        cm = JsonConversionTherapy.jsonConversion();
         launch();
     }
 
     @Override
     public void start(Stage stage) {
-        CharacterMorbit cm;
+        /*
+        CharacterDynamic cm;
         ArrayList<Stage> stages = new ArrayList<>();
         ArrayList<FXMLLoader> loaders = new ArrayList<>();
         ArrayList<CharacterDynamicController> controllers = new ArrayList<>();
 
         try{
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 2; i++) {
                 stages.add(stage);
 
                 cm = JsonConversionTherapy.getTestcharacter();
@@ -47,6 +43,8 @@ public class Main extends Application{
                 Scene scene = new Scene(loaders.get(i).load(), 800, 400);
 
                 CharacterDynamicController cdc = loaders.get(i).getController();
+
+                cm.toString();
                 cdc.setCharacter(cm);
                 cdc.displayList();
 
@@ -64,6 +62,8 @@ public class Main extends Application{
         } catch(IOException e){
             e.printStackTrace();
         }
+        */
+
 
     }
 }
