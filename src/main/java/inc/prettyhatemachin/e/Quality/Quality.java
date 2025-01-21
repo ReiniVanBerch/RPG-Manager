@@ -3,7 +3,6 @@ package inc.prettyhatemachin.e.Quality;
 import inc.prettyhatemachin.e.Exception.InvalidTypeException;
 import inc.prettyhatemachin.e.Tools.TypeHelper;
 
-import java.lang.constant.Constable;
 import java.util.ArrayList;
 
 /**
@@ -125,6 +124,15 @@ public class Quality {
 
     public Class<?> getDataType(){
         return this.datatype;
+    }
+
+    public String getValuesAsInputString(){
+        String output = "";
+        for(Object value : this.values){
+            output += value.toString() +";";
+        }
+        output = output.substring(0,output.length()-1);
+        return output;
     }
 
     @Override

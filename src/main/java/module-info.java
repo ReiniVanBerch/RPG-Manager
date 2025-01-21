@@ -22,10 +22,11 @@ module inc.prettyhatemachin.e {
     requires org.json;
     requires jdk.jdi;
     requires java.desktop;
+    requires java.sql;
 
 
     exports inc.prettyhatemachin.e.App;
-    exports inc.prettyhatemachin.e.CharacterMorbit;
+    exports inc.prettyhatemachin.e.CharacterDynamic;
     exports inc.prettyhatemachin.e.Exception;
     exports inc.prettyhatemachin.e.TestingGrounds;
     exports inc.prettyhatemachin.e.Tools;
@@ -34,5 +35,6 @@ module inc.prettyhatemachin.e {
 
     opens inc.prettyhatemachin.e.Controller;
     opens inc.prettyhatemachin.e.App to javafx.fxml;
+    exports inc.prettyhatemachin.e.FuneralPyre;
 
 }

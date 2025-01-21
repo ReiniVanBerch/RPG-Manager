@@ -8,94 +8,82 @@ package inc.prettyhatemachin.e.Tools;
  *  This file converts json files to a chacter if possible, and converts character back to json.
  */
 
-import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
+import inc.prettyhatemachin.e.CharacterDynamic.CharacterDynamic;
 import inc.prettyhatemachin.e.Quality.Quality;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
-public abstract class CharacterFileHandler {
+public class CharacterFileHandler {
 
-    static public CharacterMorbit getCharacter(String jsonContent )  {
-        try{
+    public CharacterDynamic getCharacter(File jsonFile) throws JSONException, IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        String jsonContent = new String(Files.readAllBytes(jsonFile.toPath()));
+        return this.getCharacter(jsonContent);
+    }
+
+    public CharacterDynamic getCharacter(String jsonContent) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
             JSONObject jsonObject = new JSONObject(jsonContent);
-
             return getCharacter(jsonObject);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return  null;
-
-
     }
-    static public CharacterMorbit getCharacter(JSONObject jObj) {
-        try {
-            String name = jObj.getString("name");
-            JSONArray jQualities = jObj.getJSONArray("qualities");
+
+    static public CharacterDynamic getCharacter(JSONObject jObj) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+
+        System.out.println(jObj.toString());
+        String name = jObj.getString("name");
+        JSONArray jQualities = jObj.getJSONArray("qualities");
 
 
-            ArrayList<Quality> qualities = new ArrayList<>();
+        ArrayList<Quality> qualities = new ArrayList<>();
 
-            for (int i = 0; i < jQualities.length(); i++) {
-                JSONObject jQuality = jQualities.getJSONObject(i);
+        for (int i = 0; i < jQualities.length(); i++) {
+            JSONObject jQuality = jQualities.getJSONObject(i);
 
-                String comment = jQuality.getString("comment");
-                int typeNumber = jQuality.getInt("typeNumber");
-                JSONArray jValues = jQuality.getJSONArray("values");
+            String comment = jQuality.getString("comment");
+            int typeNumber = jQuality.getInt("typeNumber");
+            JSONArray jValues = jQuality.getJSONArray("values");
 
-                ArrayList<Object> values = new ArrayList<>();
-
-
-                for (int j = 0; j < jValues.length(); j++) {
-                    Object jValue = jValues.get(j);
+            ArrayList<Object> values = new ArrayList<>();
 
 
-                    //Other than the intellisense suggesting, these casts are not redundant.
-                    //Because values are Object Lists we are passing a more defined child
-                    //This is to better handle the values later.
-                    if (jValue instanceof Integer) {
-                        values.add((int) jValue);
-                    } else if (jValue instanceof BigDecimal) {
-                        values.add(((BigDecimal) jValue).doubleValue());
-                    } else if (jValue instanceof Boolean) {
-                        values.add((boolean) jValue);
-                    } else if (jValue instanceof String) {
-                        values.add((String) jValue);
-                    } else{
-                        values.add(jValue.toString());
-                    }
+            for (int j = 0; j < jValues.length(); j++) {
+                Object jValue = jValues.get(j);
+
+
+                //Other than the intellisense suggesting, these casts are not redundant.
+                //Because values are Object Lists we are passing a more defined child
+                //This is to better handle the values later.
+                if (jValue instanceof Integer) {
+                    values.add((int) jValue);
+                } else if (jValue instanceof BigDecimal) {
+                    values.add(((BigDecimal) jValue).doubleValue());
+                } else if (jValue instanceof Boolean) {
+                    values.add((boolean) jValue);
+                } else if (jValue instanceof String) {
+                    values.add((String) jValue);
+                } else {
+                    values.add(jValue.toString());
                 }
-
-
-                Quality q = TypeHelper.generateQuality(comment, typeNumber, values);
-                qualities.add(q);
-
             }
-            return new CharacterMorbit(name, qualities);
 
 
-        } catch (InvocationTargetException ex) {
-            throw new RuntimeException(ex);
-        } catch (NoSuchMethodException ex) {
-            throw new RuntimeException(ex);
-        } catch (InstantiationException ex) {
-            throw new RuntimeException(ex);
-        } catch (IllegalAccessException ex) {
-            throw new RuntimeException(ex);
+            Quality q = TypeHelper.generateQuality(comment, typeNumber, values);
+            qualities.add(q);
+
         }
 
-
-
-
+        return new CharacterDynamic(name, qualities);
     }
 
-    static public JSONObject getJSON(CharacterMorbit character) {
+    static public JSONObject getJSON(CharacterDynamic character) {
         if (character == null) {
             throw new IllegalArgumentException("Character object cannot be null.");
         }
@@ -124,8 +112,6 @@ public abstract class CharacterFileHandler {
 
         // Return the JSON string
         return characterJson;
-
-
     }
 
 

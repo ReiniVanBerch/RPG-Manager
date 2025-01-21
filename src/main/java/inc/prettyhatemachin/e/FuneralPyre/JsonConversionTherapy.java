@@ -1,6 +1,7 @@
-package inc.prettyhatemachin.e.TestingGrounds;
+package inc.prettyhatemachin.e.FuneralPyre;
 
-import inc.prettyhatemachin.e.CharacterMorbit.CharacterMorbit;
+import inc.prettyhatemachin.e.CharacterDynamic.CharacterDynamic;
+import inc.prettyhatemachin.e.TestingGrounds.Main;
 import inc.prettyhatemachin.e.Tools.CharacterFileHandler;
 import org.json.JSONObject;
 
@@ -10,9 +11,10 @@ import java.nio.charset.StandardCharsets;
 public class JsonConversionTherapy {
     //LEISE AM AUSRASTEN
     static int charI = 0;
+    /*
+    static public CharacterDynamic getTestcharacter(){
 
-    static public CharacterMorbit getTestcharacter(){
-        String file = "/sample.character/character" + charI+ ".json";
+        String file = "/sample.characterMorbit/character" + charI+ ".json";
 
         try (InputStream inputStream = Main.class.getResourceAsStream(file)) {
             if (inputStream == null) {
@@ -20,8 +22,10 @@ public class JsonConversionTherapy {
             }
 
             // Read the resource content into a string
+            CharacterFileHandler cfh = new CharacterFileHandler();
+
             String jsonContent = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-            CharacterMorbit c = CharacterFileHandler.getCharacter(jsonContent);
+            CharacterDynamic c = cfh.getCharacter(jsonContent);
             charI++;
             return c;
         } catch (java.io.IOException ex) {
@@ -29,16 +33,20 @@ public class JsonConversionTherapy {
             return null;
         }
 
+
+
     }
 
-    static public CharacterMorbit jsonConversion() {
+    static public CharacterDynamic jsonConversion() {
 
 
         JSONObject jObj = CharacterFileHandler.getJSON(getTestcharacter());
 
         String cJSON = jObj.toString(4);
 
-        CharacterMorbit c2 = CharacterFileHandler.getCharacter(cJSON);
+        CharacterFileHandler cfh = new CharacterFileHandler();
+
+        CharacterDynamic c2 = cfh.getCharacter(cJSON);
 
         System.out.println(c2);
 
@@ -46,4 +54,6 @@ public class JsonConversionTherapy {
 
 
     }
+    */
+
 }
