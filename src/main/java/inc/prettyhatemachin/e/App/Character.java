@@ -1,5 +1,9 @@
 
 package inc.prettyhatemachin.e.App;
+/*----------------------------------------------------------------------------------------
+ * Copyright (c) BTS ka OS Corporation. All rights reserved.
+ * Static Character Loader
+ *---------------------------------------------------------------------------------------*/
 
 import inc.prettyhatemachin.e.Quality.*;
 import inc.prettyhatemachin.e.Quality.FixedValue;
@@ -7,6 +11,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Alert;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,9 +20,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class Character implements Serializable {
+
+public class Character {
 
 
 
@@ -34,7 +39,7 @@ public class Character implements Serializable {
         public ChangingValue health_value;
         public ChangingValue constitution_value;
         public ChangingValue strength_value;
-
+        //Character Constructor
         public Character (String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
             this.name = new SimpleStringProperty(name);
             this.health = new SimpleIntegerProperty(health);
@@ -44,7 +49,7 @@ public class Character implements Serializable {
                 items.add(new SimpleStringProperty(item));
             }
         }
-
+        //Getters
         public String getName() {
             return name.get();
         }
@@ -85,6 +90,14 @@ public class Character implements Serializable {
             return result;
         }
 
+    public ArrayList<String> getItemsvalue() {
+        ArrayList<String> result = new ArrayList<>();
+        for (StringProperty itms : this.itemsProperty()){
+            result.add(itms.getValue());
+        }
+        return result;
+    }
+    //Setters
     public ArrayList<StringProperty> itemsProperty() {
         return items;
     }
@@ -105,25 +118,27 @@ public class Character implements Serializable {
     }
 
 
-
+    //Save Method
     public static void saveCharacter(Character object, String filename) {
         String jsonString = new JSONObject()
                 .put("name", object.getName())
                 .put("health", object.getHealth())
                 .put("constitution", object.getConstitution())
                 .put("strength", object.getStrength())
-                .put("items", object.getItems())
+                .put("items", object.getItemsvalue())
                         .toString();
-
-        //System.out.println(jsonString);
 
             try (FileOutputStream fos = new FileOutputStream(filename);
             ) {
             fos.write(jsonString.getBytes());
         } catch (IOException e) {
+                Alert could = new Alert(Alert.AlertType.ERROR);
+                could.setContentText("Could not save File");
+                could.showAndWait();
             throw new RuntimeException(e);
         }
     }
+    //Load Method
     public static Character loadChar(String filename) {
 
         try {
@@ -131,10 +146,12 @@ public class Character implements Serializable {
             String jsoninstring = new String(fis.readAllBytes(), StandardCharsets.UTF_8);
             JSONObject json = new JSONObject(jsoninstring);
 
-            JSONArray array1 = json.getJSONArray("items");
-            ArrayList<String> itemlist = new ArrayList(array1.length());
-            for(int i=0;i < array1.length();i++){
-                itemlist.add(array1.getJSONObject(i).toString());
+            ;
+            ArrayList<String> itemlist = new ArrayList();
+            JSONArray jarray = json.getJSONArray("items");
+            jarray.length();
+            for(int i=0;i < jarray.length();i++){
+                itemlist.add(jarray.get(i).toString());
             }
             Character loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist);
             return loaded;

@@ -24,8 +24,13 @@ public class CharDisplay extends Application {
         Character.saveCharacter(character1, "src/main/resources/sample.character/character1.json");
         //Character.loadChar("src/main/resources/sample.character/character1.json");
 
+        //ToDo dunno ob das da wer braucht sorry
+        //Character character1 =(Character) stage.getUserData();
+
+
+
         FXMLLoader fxmlLoader = new FXMLLoader(CharDisplay.class.getResource("CharacterStatic.fxml"));
-        //fxmlLoader.setController(csc);
+
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         CharacterStaticController csc = fxmlLoader.getController();
         csc.setCharacter(character1);
@@ -40,6 +45,5 @@ public class CharDisplay extends Application {
 
     public static void main(String[] args) throws IOException {
         launch();
-        //inc.prettyhatemachin.e.TestingGrounds.Main.init();
     }
 }

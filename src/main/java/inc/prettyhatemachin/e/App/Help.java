@@ -1,5 +1,8 @@
 package inc.prettyhatemachin.e.App;
-
+/*----------------------------------------------------------------------------------------
+ * Copyright (c) BTS ka OS Corporation. All rights reserved.
+ * This one is special, Loads the Video Help from the Resource Folder, sadly the video is copyrighted and we cannot upload it to github
+ *---------------------------------------------------------------------------------------*/
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -25,6 +28,7 @@ public class Help extends Application {
         Scene scene = new Scene(root,800,450);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Rick");
+        //Resizes the media to fit the Window
         mediaView.fitWidthProperty().bind(primaryStage.widthProperty());
         mediaView.fitHeightProperty().bind(primaryStage.heightProperty());
         mediaView.setPreserveRatio(true);

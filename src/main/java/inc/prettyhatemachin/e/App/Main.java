@@ -1,5 +1,8 @@
 package inc.prettyhatemachin.e.App;
-
+/*----------------------------------------------------------------------------------------
+ * Copyright (c) BTS ka OS Corporation. All rights reserved.
+ * Main Stage Loader
+ *---------------------------------------------------------------------------------------*/
 import inc.prettyhatemachin.e.Controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,19 +16,18 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            // Lade die FXML-Datei
+            // Loads the FXML-File
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LandingPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 400);
 
-            // CSS hinzufügen
+            // set CSS Style
             scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
 
-            // Controller holen und Stage setzen
+            // gets controller and sets the stage
             MainController controller = fxmlLoader.getController();
             controller.setStage(stage);
-
-            // Titel setzen und anzeigen
-            stage.setTitle("Digital Game Tracker");
+            // Sets the Title and Scene
+            stage.setTitle("Digital Game Tracker - Team ka OS");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
