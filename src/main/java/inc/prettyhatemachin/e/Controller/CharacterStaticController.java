@@ -3,6 +3,8 @@ package inc.prettyhatemachin.e.Controller;
 
 import inc.prettyhatemachin.e.App.Character;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,16 +19,16 @@ public class CharacterStaticController {
 
     private Character character;
 
-    private StringProperty characterName;
+    private StringProperty characterName = new SimpleStringProperty();
 
     @FXML
     private TextField characterNameField;
 
-    private IntegerProperty characterHealth;
+    private IntegerProperty characterHealth = new SimpleIntegerProperty(0);
 
-    private IntegerProperty characterConstitution;
+    private IntegerProperty characterConstitution = new SimpleIntegerProperty(0);
 
-    private IntegerProperty characterStrength;
+    private IntegerProperty characterStrength = new SimpleIntegerProperty(0);
 
     @FXML
     private ListView<String> items;
