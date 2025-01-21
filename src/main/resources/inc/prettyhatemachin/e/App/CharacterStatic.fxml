@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inc.prettyhatemachin.e.Controller.CharacterStaticController" >
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inc.prettyhatemachin.e.Controller.CharacterStaticController">
    <children>
       <HBox prefHeight="50.0" prefWidth="600.0">
          <children>
@@ -43,7 +42,7 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button onAction="#decreaseOneHealth" mnemonicParsing="false" text="-1"> <!-- decrease health-->
+                                    <Button mnemonicParsing="false" onAction="#decreaseOneHealth" text="-1"> <!-- decrease health-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
@@ -53,11 +52,20 @@
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button onAction="#increaseOneHealth" mnemonicParsing="false" text="+1"> <!-- increase health-->
+                                    <Button mnemonicParsing="false" onAction="#increaseOneHealth" text="+1"> <!-- increase health-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="healthNumberField" alignment="CENTER" prefWidth="40.0">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="100.0" top="5.0" />
+                                       </HBox.margin>
+                                    </TextField>
                                  </children>
                               </HBox>
                            </children>
@@ -81,7 +89,7 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button onAction="#decreaseOneConstitution" mnemonicParsing="false" text="-1"> <!-- decrease constitution-->
+                                    <Button mnemonicParsing="false" onAction="#decreaseOneConstitution" text="-1"> <!-- decrease constitution-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
@@ -91,11 +99,20 @@
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button onAction="#increaseOneConstitution" mnemonicParsing="false" text="+1"> <!-- increase constitution-->
+                                    <Button mnemonicParsing="false" onAction="#increaseOneConstitution" text="+1"> <!-- increase constitution-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="constitutionNumberField" prefWidth="40.0">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="100.0" top="5.0" />
+                                       </HBox.margin>
+                                    </TextField>
                                  </children>
                               </HBox>
                            </children>
@@ -120,7 +137,7 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button onAction="#decreaseOneStrength" mnemonicParsing="false" text="-1"> <!-- decrease strength-->
+                                    <Button mnemonicParsing="false" onAction="#decreaseOneStrength" text="-1"> <!-- decrease strength-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
@@ -130,11 +147,20 @@
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button onAction="#increaseOneStrength" mnemonicParsing="false" text="+1"> <!-- increase strength-->
+                                    <Button mnemonicParsing="false" onAction="#increaseOneStrength" text="+1"> <!-- increase strength-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="strengthNumberField" prefWidth="40.0">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="100.0" top="5.0" />
+                                       </HBox.margin>
+                                    </TextField>
                                  </children>
                               </HBox>
                            </children>
@@ -155,7 +181,7 @@
                               </HBox>
                               <HBox prefHeight="125.0" prefWidth="250.0" spacing="10.0">
                                  <children>
-                                    <Button onAction="#decreaseOneCharacteristic4" mnemonicParsing="false" text="-1"> <!--decrease characteristic 4 (not implemented)-->
+                                    <Button mnemonicParsing="false" onAction="#decreaseOneCharacteristic4" text="-1"> <!--decrease characteristic 4 (not implemented)-->
                                        <HBox.margin>
                                           <Insets left="5.0" top="70.0" />
                                        </HBox.margin>
@@ -165,11 +191,20 @@
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </ProgressBar>
-                                    <Button onAction="#increaseOneCharacteristic4" mnemonicParsing="false" text="+1"> <!--increase characteristic 4 (not implemented)-->
+                                    <Button mnemonicParsing="false" onAction="#increaseOneCharacteristic4" text="+1"> <!--increase characteristic 4 (not implemented)-->
                                        <HBox.margin>
                                           <Insets top="70.0" />
                                        </HBox.margin>
                                     </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="characteristic4NumberField" prefWidth="40.0">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="100.0" top="5.0" />
+                                       </HBox.margin>
+                                    </TextField>
                                  </children>
                               </HBox>
                            </children>
@@ -180,7 +215,10 @@
             </VBox>
             <VBox prefHeight="350.0" prefWidth="100.0">
                <children>
-                  <ListView prefHeight="350.0" prefWidth="100.0" />
+                  <ListView prefHeight="350.0" prefWidth="100.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" right="10.0" />
+                     </VBox.margin></ListView>
                </children>
             </VBox>
          </children>

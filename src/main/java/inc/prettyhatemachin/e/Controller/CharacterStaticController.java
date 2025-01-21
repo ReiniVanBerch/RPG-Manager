@@ -34,7 +34,7 @@ public class CharacterStaticController {
     private ListView<String> items;
 
     @FXML
-    private ProgressBar progressBarHealth;
+    private ProgressBar progressBarHealth; //range 0-1
 
     @FXML
     private ProgressBar progressBarConstitution;
@@ -44,6 +44,18 @@ public class CharacterStaticController {
 
     @FXML
     private ProgressBar progressBarCharacteristic4;
+
+    @FXML
+    public TextField healthNumberField;
+
+    @FXML
+    public TextField constitutionNumberField;
+
+    @FXML
+    public TextField strengthNumberField;
+
+    @FXML
+    public TextField characteristic4NumberField;
 
 
 
@@ -71,10 +83,29 @@ public class CharacterStaticController {
             characterConstitution.set(character.getConstitution());
             characterStrength.set(character.getStrength());
 
-            // Reflect changes in the TextField
+            //bind value to textfields
             if (characterNameField != null) {
                 characterNameField.textProperty().bindBidirectional(characterName);
             }
+
+            if (healthNumberField != null) {
+                healthNumberField.textProperty().bind(characterHealth.asString());
+            }
+
+            if (constitutionNumberField != null) {
+                constitutionNumberField.textProperty().bind(characterConstitution.asString());
+            }
+
+            if (strengthNumberField != null) {
+                strengthNumberField.textProperty().bind(characterStrength.asString());
+            }
+
+
+            //characteristic 4 is not implemented
+            if (characteristic4NumberField != null) {
+                //characteristic4NumberField.textProperty().bind();
+            }
+
 
             ObservableList<String> observable = FXCollections.observableArrayList(character.getItems());
             this.items = new ListView<>(observable);
@@ -84,9 +115,15 @@ public class CharacterStaticController {
     @FXML
     public void initialize() {
         //other stuff
+        if (characterHealth != null) {
+            healthNumberField.textProperty().bind(characterHealth.asString());
+        }
+
+
 
 
         setCharacterName();
+        characterNameField.setEditable(false);
         //then
         updateProgressBarHealth();
         updateProgressBarConstitution();
@@ -95,7 +132,6 @@ public class CharacterStaticController {
 
     }
 
-    //TODO: gets called in initialise()
     public void setCharacterName() {
         if (characterName != null) {
             characterNameField.setText(characterName.getName());
@@ -104,12 +140,12 @@ public class CharacterStaticController {
     }
 
     @FXML
-    
     private void increaseOneHealth () {
-        if (character.healthProperty().getValue() < 100) {
-            character.healthProperty().add(1);
+        if (character.healthProperty().get() < 100) {
+            character.healthProperty().set(character.getHealth() + 1);
+            characterHealth.set(character.getHealth());
         }
-        characterHealth.set(character.healthProperty().getValue());
+
         updateProgressBarHealth();
 
         //TODO: celebration gif if 100?
@@ -117,10 +153,11 @@ public class CharacterStaticController {
 
     @FXML
     private void decreaseOneHealth() {
-        if (character.healthProperty().getValue() > 0) {
-            character.healthProperty().subtract(1);
+        if (character.healthProperty().get() > 0) {
+            character.healthProperty().set(character.getHealth() - 1);
+            characterHealth.set(character.getHealth());
         }
-        characterHealth.set(character.healthProperty().getValue());
+
         updateProgressBarHealth();
 
         //TODO: death simulation if 0?
@@ -130,54 +167,57 @@ public class CharacterStaticController {
 
     @FXML
     public void updateProgressBarHealth() {
-        progressBarHealth.setProgress(characterHealth.getValue());
+        progressBarHealth.setProgress(characterHealth.get()/100.0);
     }
 
     @FXML
     private void increaseOneConstitution() {
-        if (character.constitutionProperty().getValue() < 100) {
-            character.constitutionProperty().add(1);
+        if (character.constitutionProperty().get() < 100) {
+            character.constitutionProperty().set(character.getConstitution() + 1);
+            characterConstitution.set(character.getConstitution());
         }
-        characterConstitution.set(character.constitutionProperty().getValue());
         updateProgressBarConstitution();
     }
 
     @FXML
     private void decreaseOneConstitution() {
-        if (character.constitutionProperty().getValue() > 0) {
-            character.constitutionProperty().subtract(1);
+        if (character.constitutionProperty().get() > 0) {
+            character.constitutionProperty().set(character.getConstitution() - 1);
+            characterConstitution.set(character.getConstitution());
         }
-        characterConstitution.set(character.constitutionProperty().getValue());
+
         updateProgressBarConstitution();
     }
 
 
     @FXML
     public void updateProgressBarConstitution() {
-        progressBarConstitution.setProgress(characterConstitution.getValue());
+        progressBarConstitution.setProgress(characterConstitution.get()/100.0);
     }
 
     @FXML
     private void increaseOneStrength() {
-        if (character.strengthProperty().getValue() < 100) {
-            character.strengthProperty().add(1);
+        if (character.strengthProperty().get() < 100) {
+            character.strengthProperty().set(character.getStrength() + 1);
+            characterStrength.set(character.getStrength());
         }
-        characterStrength.set(character.strengthProperty().getValue());
+
         updateProgressBarStrength();
     }
 
     @FXML
     private void decreaseOneStrength() {
-        if (character.strengthProperty().getValue() > 0) {
-            character.strengthProperty().subtract(1);
+        if (character.strengthProperty().get() > 0) {
+            character.strengthProperty().set(character.getStrength() - 1);
+            characterStrength.set(character.getStrength());
         }
-        characterStrength.set(character.strengthProperty().getValue());
+
         updateProgressBarStrength();
     }
 
     @FXML
     public void updateProgressBarStrength() {
-        progressBarStrength.setProgress(characterStrength.getValue());
+        progressBarStrength.setProgress(characterStrength.get()/100.0);
     }
 
 
