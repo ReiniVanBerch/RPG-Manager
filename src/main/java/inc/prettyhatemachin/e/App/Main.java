@@ -26,7 +26,6 @@ public class Main extends Application {
             // gets controller and sets the stage
             MainController controller = fxmlLoader.getController();
             controller.setStage(stage);
-
             // Sets the Title and Scene
             stage.setTitle("Digital Game Tracker - Team ka OS");
             stage.setScene(scene);

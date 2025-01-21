@@ -63,6 +63,7 @@ public class MainController {
         {
             try {
                 FileChooser fileChooser = new FileChooser();
+                fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "\\build\\resources\\main\\sample.character"));
                 fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
                 File selectedFile = fileChooser.showOpenDialog(stage);
                 Character load = Character.loadChar(selectedFile.toString());

@@ -20,8 +20,7 @@ public class CharDisplay extends Application {
     public void start(Stage stage) throws IOException {
 
         Character character1 =(Character) stage.getUserData();
-        //character2 = new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}});
-        // character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
+
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(CharDisplay.class.getResource("CharacterStatic.fxml"));
