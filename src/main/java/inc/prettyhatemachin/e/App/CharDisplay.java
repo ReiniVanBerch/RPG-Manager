@@ -19,7 +19,7 @@ public class CharDisplay extends Application {
     public void start(Stage stage) throws IOException {
 
         Character character1, character2;
-        character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
+        character1 = new Character("Claudius von Vengaberg",28,73,1, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
         character2 = new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}});
         Character.saveCharacter(character1, "src/main/resources/sample.character/character1.json");
         //Character.loadChar("src/main/resources/sample.character/character1.json");
@@ -33,7 +33,7 @@ public class CharDisplay extends Application {
         // CSS hinzufügen
         scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
 
-        stage.setTitle("My Simple \"Game Tracker\"");
+        stage.setTitle("Digital Game Tracker - Character");
         stage.setScene(scene);
         stage.show();
     }

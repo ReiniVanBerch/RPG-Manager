@@ -107,7 +107,7 @@ public class MainController {
     @FXML
     private void loadCharacter() {
         // Erstellt einen FileChooser zum Auswählen der JSON-Datei
-        Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
+        Character character1 = new Character("Claudius von Vengaberg",28,73,1, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
         {
             try {
 //                CharacterStaticController csc = new CharacterStaticController(character1);
