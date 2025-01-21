@@ -64,13 +64,13 @@ public class MainController {
         loadchar.setOnAction(event ->
         {
             try {
-               /* FileChooser fileChooser = new FileChooser();
+                FileChooser fileChooser = new FileChooser();
                 fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.json"));
                 File selectedFile = fileChooser.showOpenDialog(stage);
-                Character load = Character.loadChar(selectedFile.toString());*/
+                Character load = Character.loadChar(selectedFile.toString());
                 CharDisplay help = new CharDisplay();
                 Stage charstage = new Stage();
-                //charstage.setUserData(load);
+                charstage.setUserData(load);
                 help.start(charstage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -119,31 +119,6 @@ public class MainController {
         }
 
 
-        //new CharacterStaticController(character1);
-        /*
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.ser"));
-        File file = fileChooser.showOpenDialog(stage);
-
-        if (file != null) {
-
-            // Liest den Inhalt der ausgewählten Datei
-            Character char1 = loadChar(file.getAbsolutePath());
-            // Verarbeite die JSON-Datei (hier nur eine Informationsmeldung)
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("JSON-Datei geladen");
-            alert.setHeaderText(null);
-            alert.setContentText("JSON-Datei erfolgreich geladen!");
-            alert.showAndWait();
-            Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
-            new CharacterStaticController(character1);
-
-
-        }else {
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("JSON-Datei erfolgreich geladen!");
-        }
-*/
 
     }
 

@@ -85,6 +85,14 @@ public class Character implements Serializable {
             return result;
         }
 
+    public ArrayList<String> getItemsvalue() {
+        ArrayList<String> result = new ArrayList<>();
+        for (StringProperty itms : this.itemsProperty()){
+            result.add(itms.getValue());
+        }
+        return result;
+    }
+
     public ArrayList<StringProperty> itemsProperty() {
         return items;
     }
@@ -112,7 +120,7 @@ public class Character implements Serializable {
                 .put("health", object.getHealth())
                 .put("constitution", object.getConstitution())
                 .put("strength", object.getStrength())
-                .put("items", object.getItems())
+                .put("items", object.getItemsvalue())
                         .toString();
 
         //System.out.println(jsonString);
@@ -131,10 +139,12 @@ public class Character implements Serializable {
             String jsoninstring = new String(fis.readAllBytes(), StandardCharsets.UTF_8);
             JSONObject json = new JSONObject(jsoninstring);
 
-            JSONArray array1 = json.getJSONArray("items");
-            ArrayList<String> itemlist = new ArrayList(array1.length());
-            for(int i=0;i < array1.length();i++){
-                itemlist.add(array1.getJSONObject(i).toString());
+            ;
+            ArrayList<String> itemlist = new ArrayList();
+            JSONArray jarray = json.getJSONArray("items");
+            jarray.length();
+            for(int i=0;i < jarray.length();i++){
+                itemlist.add(jarray.get(i).toString());
             }
             Character loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist);
             return loaded;
