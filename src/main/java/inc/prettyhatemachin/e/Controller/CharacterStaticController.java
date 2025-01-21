@@ -63,11 +63,6 @@ public class CharacterStaticController {
     @FXML
     private TextField characteristic4NumberField;
 
-
-
-
-
-
     public CharacterStaticController(){
 
 
