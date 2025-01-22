@@ -178,6 +178,7 @@ public class CharacterDynamicController {
 
         //Set extension filter for text files
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("SAVE CHARACTER", "*.json");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "\\build\\resources\\main\\sample.characterDynamic"));
         fileChooser.getExtensionFilters().add(extFilter);
 
         //Show save file dialog
