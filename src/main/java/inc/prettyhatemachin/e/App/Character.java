@@ -1,9 +1,5 @@
 
 package inc.prettyhatemachin.e.App;
-/*----------------------------------------------------------------------------------------
- * Copyright (c) BTS ka OS Corporation. All rights reserved.
- * Static Character Loader
- *---------------------------------------------------------------------------------------*/
 
 import inc.prettyhatemachin.e.Quality.*;
 import inc.prettyhatemachin.e.Quality.FixedValue;
@@ -20,25 +16,29 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Character implements Serializable {
 
 
-public class Character {
+
+
+
+
 
         private final StringProperty name;
         private final IntegerProperty health;
         private final IntegerProperty constitution;
         private final IntegerProperty strength;
         private final ArrayList<StringProperty> items = new ArrayList<>();
-
-
+        private final StringProperty characteristicname;
+        private final IntegerProperty characteristic;
         public FixedValue name_value;
         public ChangingValue health_value;
         public ChangingValue constitution_value;
         public ChangingValue strength_value;
 
-
-        //Character Constructor
-        public Character (String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
+        public Character (String name, int health, int constitution, int strength, ArrayList<String> itemsin, String characteristicname, int characteristic ) {
             this.name = new SimpleStringProperty(name);
             this.health = new SimpleIntegerProperty(health);
             this.constitution = new SimpleIntegerProperty(constitution);
@@ -46,8 +46,22 @@ public class Character {
             for(String item : itemsin){
                 items.add(new SimpleStringProperty(item));
             }
+            this.characteristicname = new SimpleStringProperty(characteristicname);
+            this.characteristic = new SimpleIntegerProperty(characteristic);
         }
-        //Getters
+
+    public Character (String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
+        this.name = new SimpleStringProperty(name);
+        this.health = new SimpleIntegerProperty(health);
+        this.constitution = new SimpleIntegerProperty(constitution);
+        this.strength = new SimpleIntegerProperty(strength);
+        for(String item : itemsin){
+            items.add(new SimpleStringProperty(item));
+        }
+        this.characteristicname = new SimpleStringProperty("");
+        this.characteristic = new SimpleIntegerProperty(0);
+    }
+
         public String getName() {
             return name.get();
         }
@@ -83,19 +97,11 @@ public class Character {
         public ArrayList<String> getItems() {
             ArrayList<String> result = new ArrayList<>();
             for (StringProperty itms : this.itemsProperty()){
-                result.add(itms.get());
+                result.add(itms.toString());
             }
             return result;
         }
 
-    public ArrayList<String> getItemsvalue() {
-        ArrayList<String> result = new ArrayList<>();
-        for (StringProperty itms : this.itemsProperty()){
-            result.add(itms.getValue());
-        }
-        return result;
-    }
-    //Setters
     public ArrayList<StringProperty> itemsProperty() {
         return items;
     }
@@ -115,6 +121,27 @@ public class Character {
         items.add(new SimpleStringProperty(newitems));
     }
 
+    public String getCharacteristicname() {
+        return characteristicname.get();
+    }
+
+    public StringProperty characteristicnameProperty() {
+        return characteristicname;
+    }
+
+    public int getCharacteristic() {
+        return characteristic.get();
+    }
+
+    public IntegerProperty characteristicProperty() {
+        return characteristic;
+    }
+    public void setCharacteristicname(String newcharacteristicname) {
+            characteristicname.set(newcharacteristicname);
+    }
+    public void setCharacteristic(int newcharacteristic){
+            characteristic.set(newcharacteristic);
+    }
 
     //Save Method
     public static void saveCharacter(Character object, String filename) {
@@ -123,8 +150,12 @@ public class Character {
                 .put("health", object.getHealth())
                 .put("constitution", object.getConstitution())
                 .put("strength", object.getStrength())
-                .put("items", object.getItemsvalue())
+                .put("items", object.getItems())
+                .put("characteristicname",object.getCharacteristicname())
+                .put("characteristic",object.getCharacteristic())
                         .toString();
+
+        //System.out.println(jsonString);
 
             try (FileOutputStream fos = new FileOutputStream(filename);
             ) {
