@@ -157,7 +157,7 @@ public class Character  {
                 .put("health", object.getHealth())
                 .put("constitution", object.getConstitution())
                 .put("strength", object.getStrength())
-                .put("items", object.getItemsvalue().toString())
+                .put("items", object.getItemsvalue())
                 .put("characteristicname",object.getCharacteristicName())
                 .put("characteristic",object.getCharacteristic())
                         .toString();
@@ -182,7 +182,7 @@ public class Character  {
             String jsoninstring = new String(fis.readAllBytes(), StandardCharsets.UTF_8);
             JSONObject json = new JSONObject(jsoninstring);
 
-            ;
+
             ArrayList<String> itemlist = new ArrayList();
             JSONArray jarray = json.getJSONArray("items");
             jarray.length();
