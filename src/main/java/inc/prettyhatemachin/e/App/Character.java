@@ -18,7 +18,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Character implements Serializable {
+public class Character  {
 
 
 
@@ -58,7 +58,7 @@ public class Character implements Serializable {
         for(String item : itemsin){
             items.add(new SimpleStringProperty(item));
         }
-        this.characteristicname = new SimpleStringProperty("");
+        this.characteristicname = new SimpleStringProperty(null);
         this.characteristic = new SimpleIntegerProperty(0);
     }
 
