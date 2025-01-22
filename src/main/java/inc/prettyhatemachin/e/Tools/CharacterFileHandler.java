@@ -9,7 +9,9 @@ package inc.prettyhatemachin.e.Tools;
  */
 
 import inc.prettyhatemachin.e.CharacterDynamic.CharacterDynamic;
+import inc.prettyhatemachin.e.Exception.InvalidTypeException;
 import inc.prettyhatemachin.e.Quality.Quality;
+import javafx.scene.control.Alert;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,8 +77,16 @@ public class CharacterFileHandler {
             }
 
 
-            Quality q = TypeHelper.generateQuality(comment, typeNumber, values);
-            qualities.add(q);
+            try{
+                Quality q = TypeHelper.generateQuality(comment, typeNumber, values);
+                qualities.add(q);
+            } catch(InvalidTypeException e){
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setTitle("INVALID TYPING");
+                a.setContentText("Your character still will be loaded, but there may be something missing.");
+                a.show();
+            }
+
 
         }
 
@@ -113,6 +123,4 @@ public class CharacterFileHandler {
         // Return the JSON string
         return characterJson;
     }
-
-
 }

@@ -13,6 +13,7 @@ package inc.prettyhatemachin.e.Controller;
  */
 
 import inc.prettyhatemachin.e.CharacterDynamic.CharacterDynamic;
+import inc.prettyhatemachin.e.Exception.InvalidTypeException;
 import inc.prettyhatemachin.e.Quality.Quality;
 import inc.prettyhatemachin.e.Quality.FixedValue;
 
@@ -83,9 +84,13 @@ public class CharacterDynamicController {
 
 
         qualityCommentLabel.setText(this.currentQuality.getComment());
-        qualityTypeLabel.setText(TypeHelper.getTypingAsString(this.currentQuality.getTypeNumber()));
-
+        try {
+            qualityTypeLabel.setText(TypeHelper.getTypingAsString(this.currentQuality.getTypeNumber()));
+        } catch (InvalidTypeException e){
+            qualityTypeLabel.setText(e.toString());
+        }
         ArrayList<String> valuesAsString = new ArrayList<>();
+
 
         for(Object value : this.currentQuality.getValues()){
             valuesAsString.add(value.toString());
@@ -141,32 +146,40 @@ public class CharacterDynamicController {
         String[] valuesString = valuesAsString.split(";");
         ArrayList<Object> values = new ArrayList<>();
 
-        for(int i = 0; i < valuesString.length; i++){
+        if(this.currentQuality.getValues().size() == valuesString.length){
 
-            System.out.println("Trying: " + i + " -> " + dt.getSimpleName());
-            String valueString = valuesString[i];
+            for(int i = 0; i < valuesString.length; i++){
 
-            Object obj = dataTypeChecker(dt, valueString);
+                System.out.println("Trying: " + i + " -> " + dt.getSimpleName());
+                String valueString = valuesString[i];
 
-            if(obj != null){
-                values.add(obj);
+                Object obj = dataTypeChecker(dt, valueString);
+
+                if(obj != null){
+                    values.add(obj);
+                }
+
             }
 
+
+            try {
+                Quality quality;
+                quality = TypeHelper.generateQuality(this.currentQuality.getComment(), this.currentQuality.getTypeNumber(), values);
+                this.character.setQuality(this.character.getQualities().indexOf(this.currentQuality), quality);
+            } catch (Exception e){
+
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText(e.toString());
+                a.show();
+            }
+
+            this.loadQuality();
         }
-
-
-        try {
-            Quality quality;
-            quality = TypeHelper.generateQuality(this.currentQuality.getComment(), this.currentQuality.getTypeNumber(), values);
-            this.character.setQuality(this.character.getQualities().indexOf(this.currentQuality), quality);
-        } catch (Exception e){
-
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText(e.toString());
+        else {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Please give the same amount of arguments as already are given!");
             a.show();
         }
-
-        this.loadQuality();
     }
 
 

@@ -46,19 +46,28 @@ public class CharacterStaticCreatorController {
             int constitution = Integer.parseInt(constitutionTextField.getText());
             int strength = Integer.parseInt(strengthTextField.getText());
 
-            Character character = new Character(name, health, constitution, strength, items);
+            if( health >= 0 && health <= 100 &&
+                constitution >= 0 && constitution <= 100 &&
+                strength >= 0 && strength <= 100
+            ) {
+                Character character = new Character(name, health, constitution, strength, items);
 
 
-            Stage saveStage = new Stage();
-            FileChooser fileChooser = new FileChooser();
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("SAVE CHARACTER", "*.json");
-            fileChooser.getExtensionFilters().add(extFilter);
+                Stage saveStage = new Stage();
+                FileChooser fileChooser = new FileChooser();
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("SAVE CHARACTER", "*.json");
+                fileChooser.getExtensionFilters().add(extFilter);
 
 
-            File file = fileChooser.showSaveDialog(saveStage);
+                File file = fileChooser.showSaveDialog(saveStage);
 
-            Character.saveCharacter(character, file.toPath().toString());
-
+                Character.saveCharacter(character, file.toPath().toString());
+            } else {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setTitle("Faulty numbers!");
+                a.setContentText("The numbers seem to be out of range!");
+                a.show();
+            }
         } catch (NumberFormatException e) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Error");

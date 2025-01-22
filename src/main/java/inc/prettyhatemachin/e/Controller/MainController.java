@@ -162,13 +162,7 @@ public class MainController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-
     }
-
-
-
 
 
     public void openCharacterDynamic(CharacterDynamic cd){
@@ -233,12 +227,12 @@ public class MainController {
             }
             catch (NoSuchMethodException NMSex){
                 Alert a = new Alert(AlertType.ERROR);
-                a.setContentText("An error occured");
+                a.setContentText("An error occurred");
                 a.show();
             }
             catch (InstantiationException Iex){
                 Alert a = new Alert(AlertType.ERROR);
-                a.setContentText("An error occured");
+                a.setContentText("An error occurred");
                 a.show();
             }
             catch (IllegalAccessException IAex){
