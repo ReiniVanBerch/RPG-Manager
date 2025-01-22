@@ -99,6 +99,7 @@ public class MainController {
 
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("User Files", "*.json"));
+                fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "\\build\\resources\\main\\sample.character"));
                 File selectedFile = fileChooser.showOpenDialog(stage);
 
                 Character character = Character.loadChar(selectedFile.toString());
@@ -167,60 +168,8 @@ public class MainController {
     }
 
 
-    // Methode zum Anzeigen der Charaktere
-    @FXML
-    private void showCharacters() {
-        // Zeigt eine Informationsmeldung an
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Charaktere");
-        alert.setHeaderText(null);
-        alert.setContentText("Charaktere werden angezeigt!");
-        alert.showAndWait();
-    }
-
-    // Methode zum Laden einer JSON-Datei
-    @FXML
-    private void loadCharacter() {
-        // Erstellt einen FileChooser zum Auswählen der JSON-Datei
-        Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
-        {
-            try {
-//                CharacterStaticController csc = new CharacterStaticController(character1);
-//                Stage charpstage = new Stage();
-                CharDisplay.launch();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
 
 
-        //new CharacterStaticController(character1);
-        /*
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.ser"));
-        File file = fileChooser.showOpenDialog(stage);
-
-        if (file != null) {
-
-            // Liest den Inhalt der ausgewählten Datei
-            Character char1 = loadChar(file.getAbsolutePath());
-            // Verarbeite die JSON-Datei (hier nur eine Informationsmeldung)
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("JSON-Datei geladen");
-            alert.setHeaderText(null);
-            alert.setContentText("JSON-Datei erfolgreich geladen!");
-            alert.showAndWait();
-            Character character1 = new Character("Claudius von Vengaberg",100,100,200, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
-            new CharacterStaticController(character1);
-
-
-        }else {
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("JSON-Datei erfolgreich geladen!");
-        }
-*/
-
-    }
 
     public void openCharacterDynamic(CharacterDynamic cd){
         try{
@@ -264,6 +213,7 @@ public class MainController {
 
         //Set extension filter for text files
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("OPEN CHARACTER", "*.json");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "\\build\\resources\\main\\sample.characterDynamic"));
         fileChooser.getExtensionFilters().add(extFilter);
 
         //Show open dialog
