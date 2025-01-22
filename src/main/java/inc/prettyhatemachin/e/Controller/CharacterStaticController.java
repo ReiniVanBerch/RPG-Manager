@@ -120,9 +120,6 @@ public class CharacterStaticController {
             } else {
                 setCharacteristic4Name();
             }
-            if (character.getCharacteristic() == 0) {
-                setCharacteristic4Value();
-            }
 
 
             //in case values were changed
@@ -352,58 +349,6 @@ public class CharacterStaticController {
         }
 
     }
-
-    //lets the user type into the number field, and save it to the property
-    @FXML
-    public void setCharacteristic4Value() {
-        characteristic4NumberField.textProperty().bindBidirectional(characteristic4Value, new StringConverter<Number>() {
-            @Override
-            public String toString(Number object) {
-                return object != null ? object.toString() : "";
-            }
-
-            @Override
-            public Number fromString(String string) {
-                try {
-                    if (string.isEmpty()) {
-                        return 0;
-                    }
-                    return Integer.parseInt(string);
-                } catch (NumberFormatException e) {
-                    return characteristic4Value.get();
-                }
-            }
-        });
-
-        //validates input if enter was pressed
-        characteristic4NumberField.setOnAction(event -> validateCharacteristic4Input());
-
-    }
-
-    //validates input after enter was pressed
-    private void validateCharacteristic4Input() {
-        try {
-           String input = characteristic4NumberField.getText();
-           if (input.isEmpty()) {
-               characteristic4Value.set(0);
-           } else {
-               int value = Integer.parseInt(input);
-               if (value < 0 || value > 100) {
-                   throw new IllegalArgumentException("oh no :( please stay withing the range 0-100");
-               }
-               characteristic4Value.set(value);
-           }
-           updateProgressBarCharacteristic4();
-        } catch (NumberFormatException e) {
-            characteristic4NumberField.setText(String.valueOf(0));
-            showErrorAlert("wrong try again", "please use numerical input between 0  and 100");
-
-        } catch (IllegalArgumentException e) {
-            characteristic4NumberField.setText(String.valueOf(0));
-            showErrorAlert("Error", e.getMessage());
-        }
-    }
-
 
     //Error message
     private void showErrorAlert(String title, String content) {
