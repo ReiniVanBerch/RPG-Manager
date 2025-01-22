@@ -1,1 +1,1 @@
-{"constitution":30,"strength":15,"name":"Vincent Vega","health":50,"items":["StringProperty [value: Uzi]","StringProperty [value: brauner Lederkoffer]"],"characteristicname":"Drogenkosnum","characteristic":3}
+{"constitution":30,"strength":15,"name":"Vincent Vega","health":50,"items":"[Uzi, brauner Lederkoffer]","characteristicname":"Drogenkosnum","characteristic":3}

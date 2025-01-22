@@ -157,7 +157,7 @@ public class Character  {
                 .put("health", object.getHealth())
                 .put("constitution", object.getConstitution())
                 .put("strength", object.getStrength())
-                .put("items", object.getItemsvalue())
+                .put("items", object.getItemsvalue().toString())
                 .put("characteristicname",object.getCharacteristicName())
                 .put("characteristic",object.getCharacteristic())
                         .toString();
@@ -194,7 +194,7 @@ public class Character  {
             try {
                 String cm = json.getString("characteristicname");
                 int cv = json.getInt("characteristic");
-                 loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist,
+                loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist,
                         cm, cv);
 
             } catch(Exception e){
