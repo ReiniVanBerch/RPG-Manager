@@ -30,7 +30,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="200.0">
                                  <children>
-                                    <TextField alignment="CENTER" text="health">
+                                    <TextField fx:id="healthNameField" alignment="CENTER" text="health">
                                        <HBox.margin>
                                           <Insets left="10.0" top="7.0" />
                                        </HBox.margin>
@@ -74,7 +74,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="200.0">
                                  <children>
-                                    <TextField alignment="CENTER" text="Constitution">
+                                    <TextField fx:id="constitutionNameField" alignment="CENTER" text="Constitution">
                                        <HBox.margin>
                                           <Insets left="10.0" top="7.0" />
                                        </HBox.margin>
@@ -125,7 +125,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="200.0">
                                  <children>
-                                    <TextField alignment="CENTER" text="Strength">
+                                    <TextField fx:id="strengthNameField" alignment="CENTER" text="Strength">
                                        <HBox.margin>
                                           <Insets left="10.0" top="7.0" />
                                        </HBox.margin>
@@ -169,7 +169,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="200.0">
                                  <children>
-                                    <TextField alignment="CENTER" text="(prompt text option)">
+                                    <TextField fx:id="characteristic4NameField" alignment="CENTER">
                                        <HBox.margin>
                                           <Insets left="10.0" top="7.0" />
                                        </HBox.margin>
@@ -219,7 +219,7 @@
                      <VBox.margin>
                         <Insets bottom="10.0" right="10.0" />
                      </VBox.margin></ListView>
-                  <Button onAction="#saveFile" mnemonicParsing="false" text="Save">
+                  <Button mnemonicParsing="false" onAction="#saveFile" text="Save">
                      <VBox.margin>
                         <Insets bottom="5.0" left="40.0" />
                      </VBox.margin>
