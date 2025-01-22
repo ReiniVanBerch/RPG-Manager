@@ -3,6 +3,7 @@ package inc.prettyhatemachin.e.Controller;
 import inc.prettyhatemachin.e.App.CharDisplay;
 import inc.prettyhatemachin.e.App.Character;
 import inc.prettyhatemachin.e.App.Help;
+import inc.prettyhatemachin.e.App.Main;
 import inc.prettyhatemachin.e.CharacterDynamic.CharacterDynamic;
 import inc.prettyhatemachin.e.FuneralPyre.JsonConversionTherapy;
 import inc.prettyhatemachin.e.Tools.CharacterFileHandler;
@@ -82,6 +83,7 @@ public class MainController {
         loadchar.setOnAction(event ->
         {
             try {
+                /*
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.json"));
                 File selectedFile = fileChooser.showOpenDialog(stage);
@@ -90,6 +92,36 @@ public class MainController {
                 Stage charstage = new Stage();
                 charstage.setUserData(load);
                 help.start(charstage);
+
+                 */
+
+                Stage stage = new Stage();
+
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("User Files", "*.json"));
+                File selectedFile = fileChooser.showOpenDialog(stage);
+
+                Character character = Character.loadChar(selectedFile.toString());
+
+
+                //CharDisplay help = new CharDisplay();
+                Stage charstage = new Stage();
+                charstage.setUserData(character);
+
+                //help.start(charstage);
+
+                FXMLLoader fxmlLoader = new FXMLLoader(CharDisplay.class.getResource("CharacterStatic.fxml"));
+
+                Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+                CharacterStaticController csc = fxmlLoader.getController();
+                csc.setCharacter(character);
+
+                // CSS hinzufügen
+                scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
+
+                stage.setTitle("Digital Game Tracker - Character");
+                stage.setScene(scene);
+                stage.show();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -107,9 +139,34 @@ public class MainController {
                     }
                 }
         );
+    }
+
+
+    @FXML
+    public void newCharOpen(){
+        System.out.println("in the method");
+        Stage newStage = new Stage();
+        stages.add(newStage);
+        loaders.add(new FXMLLoader(inc.prettyhatemachin.e.App.Main.class.getResource("CreateStaticCharacter.fxml")));
+
+        //last index
+        int lil = loaders.size() - 1;
+        int lis = stages.size() - 1;
+
+        Scene scene = null;
+        try {
+            scene = new Scene(loaders.get(lil).load(), 800, 400);
+            stages.get(lis).setScene(scene);
+            stages.get(lis).show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
     }
+
+
     // Methode zum Anzeigen der Charaktere
     @FXML
     private void showCharacters() {
@@ -137,7 +194,7 @@ public class MainController {
         }
 
 
-        new CharacterStaticController(character1);
+        //new CharacterStaticController(character1);
         /*
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ser Files", "*.ser"));

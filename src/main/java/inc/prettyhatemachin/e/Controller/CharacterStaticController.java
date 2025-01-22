@@ -272,7 +272,7 @@ public class CharacterStaticController {
     public void saveFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
-        File selectedFile = fileChooser.showOpenDialog(healthNumberField.getScene().getWindow());
+        File selectedFile = fileChooser.showSaveDialog(healthNumberField.getScene().getWindow());
         //fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "\build\resources\main\sample.character"));
         Character.saveCharacter(character,selectedFile.toString());
 

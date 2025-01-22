@@ -24,21 +24,19 @@ import java.util.ArrayList;
 
 public class Character {
 
-
-
-
-
-
-
         private final StringProperty name;
         private final IntegerProperty health;
         private final IntegerProperty constitution;
         private final IntegerProperty strength;
         private final ArrayList<StringProperty> items = new ArrayList<>();
+
+
         public FixedValue name_value;
         public ChangingValue health_value;
         public ChangingValue constitution_value;
         public ChangingValue strength_value;
+
+
         //Character Constructor
         public Character (String name, int health, int constitution, int strength, ArrayList<String> itemsin) {
             this.name = new SimpleStringProperty(name);
