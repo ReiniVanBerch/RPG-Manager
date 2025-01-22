@@ -96,10 +96,18 @@ public class Character  {
         public ArrayList<String> getItems() {
             ArrayList<String> result = new ArrayList<>();
             for (StringProperty itms : this.itemsProperty()){
-                result.add(itms.toString());
+                result.add(itms.get());
             }
             return result;
         }
+
+    public ArrayList<String> getItemsvalue() {
+        ArrayList<String> result = new ArrayList<>();
+        for (StringProperty itms : this.itemsProperty()){
+            result.add(itms.getValue());
+        }
+        return result;
+    }
 
     public ArrayList<StringProperty> itemsProperty() {
         return items;
@@ -149,7 +157,7 @@ public class Character  {
                 .put("health", object.getHealth())
                 .put("constitution", object.getConstitution())
                 .put("strength", object.getStrength())
-                .put("items", object.getItems())
+                .put("items", object.getItemsvalue())
                 .put("characteristicname",object.getCharacteristicName())
                 .put("characteristic",object.getCharacteristic())
                         .toString();

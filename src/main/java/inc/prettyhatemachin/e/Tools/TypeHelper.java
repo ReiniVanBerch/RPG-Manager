@@ -15,6 +15,7 @@ package inc.prettyhatemachin.e.Tools;
  */
 
 
+import inc.prettyhatemachin.e.Exception.InvalidTypeException;
 import inc.prettyhatemachin.e.Quality.*;
 
 import java.lang.reflect.Constructor;
@@ -63,7 +64,7 @@ public class TypeHelper {
         }
     }
 
-    public static Class<?> getDataType(int typeNumber){
+    public static Class<?> getDataType(int typeNumber) {
         int num = typeNumber / 0x10;
 
 
@@ -81,7 +82,7 @@ public class TypeHelper {
         }
     }
 
-    public static <T extends Quality> Class<T> getQuality(int typeNumber){
+    public static <T extends Quality> Class<T> getQuality(int typeNumber) throws InvalidTypeException{
         int num = typeNumber % 0x10;
         switch (num){
             case 0x00:
@@ -96,12 +97,11 @@ public class TypeHelper {
                 return (Class<T>) ListValue.class;
 
             default:
-                return null;
+                throw new InvalidTypeException();
         }
     }
 
-
-    public static <T extends Quality> Quality generateQuality(String comment, Integer typeNumber, ArrayList<Object> values) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public static <T extends Quality> Quality generateQuality(String comment, Integer typeNumber, ArrayList<Object> values) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, InvalidTypeException {
 
         Object[] parameters = new Object[3];
         parameters[0] = comment;
@@ -116,7 +116,7 @@ public class TypeHelper {
 
     }
 
-    public static String getTypingAsString(int typeNumber){
+    public static String getTypingAsString(int typeNumber) throws InvalidTypeException {
         String qual, data;
         qual = getQuality(typeNumber).getSimpleName();
         data = getDataType(typeNumber).getSimpleName();
