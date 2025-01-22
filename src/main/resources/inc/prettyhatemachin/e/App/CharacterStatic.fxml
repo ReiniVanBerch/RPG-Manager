@@ -74,7 +74,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="200.0">
                                  <children>
-                                    <TextField fx:id="constitutionNameField" alignment="CENTER" text="Constitution">
+                                    <TextField fx:id="constitutionNameField" alignment="CENTER" text="constitution">
                                        <HBox.margin>
                                           <Insets left="10.0" top="7.0" />
                                        </HBox.margin>
@@ -125,7 +125,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="200.0">
                                  <children>
-                                    <TextField fx:id="strengthNameField" alignment="CENTER" text="Strength">
+                                    <TextField fx:id="strengthNameField" alignment="CENTER" text="strength">
                                        <HBox.margin>
                                           <Insets left="10.0" top="7.0" />
                                        </HBox.margin>

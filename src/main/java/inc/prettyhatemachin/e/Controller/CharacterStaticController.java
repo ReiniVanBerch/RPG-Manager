@@ -40,6 +40,7 @@ public class CharacterStaticController {
     //health has range 0-25 ->  numbers>25 will be set to 25, numbers<0 to 0
     private final IntegerProperty characterStrength = new SimpleIntegerProperty(0);
 
+    // characteristic4 has range 0-100
     private final IntegerProperty characteristic4Value = new SimpleIntegerProperty();
 
 
