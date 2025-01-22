@@ -16,7 +16,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Character  {
 
@@ -121,7 +120,7 @@ public class Character  {
         items.add(new SimpleStringProperty(newitems));
     }
 
-    public String getCharacteristicname() {
+    public String getCharacteristicName() {
         return characteristicname.get();
     }
 
@@ -151,7 +150,7 @@ public class Character  {
                 .put("constitution", object.getConstitution())
                 .put("strength", object.getStrength())
                 .put("items", object.getItems())
-                .put("characteristicname",object.getCharacteristicname())
+                .put("characteristicname",object.getCharacteristicName())
                 .put("characteristic",object.getCharacteristic())
                         .toString();
 
@@ -182,7 +181,19 @@ public class Character  {
             for(int i=0;i < jarray.length();i++){
                 itemlist.add(jarray.get(i).toString());
             }
-            Character loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist);
+
+            Character loaded;
+            try {
+                String cm = json.getString("characteristicname");
+                int cv = json.getInt("characteristic");
+                 loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist,
+                        cm, cv);
+
+            } catch(Exception e){
+                loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist);
+
+            }
+
             return loaded;
         } catch (IOException e) {
             throw new RuntimeException(e);

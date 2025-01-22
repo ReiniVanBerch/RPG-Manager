@@ -17,14 +17,13 @@ import javafx.stage.FileChooser;
 import javafx.util.StringConverter;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class CharacterStaticController {
 
     private Character character;
 
     private final StringProperty characterName = new SimpleStringProperty();
-    private final StringProperty characteristic4Name = new SimpleStringProperty("(optional)");
+    private final StringProperty characteristic4Name = new SimpleStringProperty("optional");
 
     @FXML
     private TextField characterNameField;
@@ -104,11 +103,33 @@ public class CharacterStaticController {
             characterHealth.set(Math.max(0, Math.min(character.getHealth(), 100))); //ensures in bounds
             characterConstitution.set(Math.max(0, Math.min(character.getConstitution(), 100)));
             characterStrength.set(Math.max(0, Math.min(character.getStrength(), 25)));
+            characteristic4Value.set(Math.max(0, Math.min(character.getCharacteristic(), 100)));
+
+            //in case characteristic 4 is pre-added
+            if (character.getCharacteristicName() != null) {
+                characteristic4Name.set(character.getCharacteristicName());
+                characteristic4NameField.setEditable(false);
+            }
+            if (character.getCharacteristic() != 0) {
+                characteristic4Value.set(Math.max(0, Math.min(character.getCharacteristic(), 100)));
+                characteristic4NumberField.setEditable(false);
+            }
+
+            if (character.getCharacteristicName() != null) {
+                characteristic4Name.set(character.getCharacteristicName());
+            } else {
+                setCharacteristic4Name();
+            }
+            if (character.getCharacteristic() == 0) {
+                setCharacteristic4Value();
+            }
+
 
             //in case values were changed
             character.setHealth(characterHealth.get());
             character.setConstitution(characterConstitution.get());
             character.setStrength(characterStrength.get());
+            character.setCharacteristic(characteristic4Value.get());
 
 
             //bind value to textfields
@@ -127,6 +148,16 @@ public class CharacterStaticController {
             if (strengthNumberField != null) {
                 strengthNumberField.textProperty().bind(characterStrength.asString());
             }
+
+            if (characteristic4NumberField != null) {
+                characteristic4NumberField.textProperty().bind(characteristic4Value.asString());
+            }
+
+            if (characteristic4NameField != null) {
+                characteristic4NameField.textProperty().bindBidirectional(characteristic4Name);
+            }
+
+
 
             showItems();
             updateProgressBarConstitution();
@@ -152,17 +183,18 @@ public class CharacterStaticController {
         showItems();
 
         //characteristic 4
-        setCharacteristic4Name();
-        setCharacteristic4Value();
+
         updateProgressBarCharacteristic4();
 
     }
 
+    //shows character name on screen
     public void setCharacterName() {
         characterNameField.setText(characterName.getName());
 
     }
 
+    //shows items in list view on screen
     public void showItems() {
         if (character != null && items != null) {
             ObservableList<String> observable = FXCollections.observableArrayList(character.getItems());
@@ -170,6 +202,7 @@ public class CharacterStaticController {
         }
     }
 
+    //increases health by 1
     @FXML
     private void increaseOneHealth () {
         if (character.healthProperty().get() < 100) {
@@ -181,6 +214,7 @@ public class CharacterStaticController {
         updateProgressBarHealth();
     }
 
+    //decreases health by 1
     @FXML
     private void decreaseOneHealth() {
         if (character.healthProperty().get() > 0) {
@@ -191,13 +225,14 @@ public class CharacterStaticController {
         characterHealth.set(character.getHealth());
         updateProgressBarHealth();
     }
-    
 
+    //updates progress bar for health
     @FXML
     public void updateProgressBarHealth() {
         progressBarHealth.setProgress(characterHealth.get()/100.0);
     }
 
+    //increases constitution by 1
     @FXML
     private void increaseOneConstitution() {
         if (character.constitutionProperty().get() < 100) {
@@ -209,6 +244,7 @@ public class CharacterStaticController {
         updateProgressBarConstitution();
     }
 
+    //decreases constitution by 1
     @FXML
     private void decreaseOneConstitution() {
         if (character.constitutionProperty().get() > 0) {
@@ -220,12 +256,13 @@ public class CharacterStaticController {
         updateProgressBarConstitution();
     }
 
-
+    //updates progress bar for constitution
     @FXML
     public void updateProgressBarConstitution() {
         progressBarConstitution.setProgress(characterConstitution.get()/100.0);
     }
 
+    //increases strength by 1
     @FXML
     private void increaseOneStrength() {
         if (character.strengthProperty().get() < 25) {
@@ -237,6 +274,7 @@ public class CharacterStaticController {
         updateProgressBarStrength();
     }
 
+    //decreases strength by 1
     @FXML
     private void decreaseOneStrength() {
         if (character.strengthProperty().get() > 0) {
@@ -248,6 +286,7 @@ public class CharacterStaticController {
         updateProgressBarStrength();
     }
 
+    //updates progress bar for strength
     @FXML
     public void updateProgressBarStrength() {
         progressBarStrength.setProgress(characterStrength.get()/25.0);
@@ -265,7 +304,7 @@ public class CharacterStaticController {
     }
 
 
-    //characteristic 4
+    //increases value of characteristic 4 by 1
     @FXML
     private void increaseOneCharacteristic4() {
         if (characteristic4Value.get() < 100) {
@@ -276,6 +315,7 @@ public class CharacterStaticController {
         updateProgressBarCharacteristic4();
     }
 
+    //decreases value of characteristic 4 by 1
     @FXML
     private void decreaseOneCharacteristic4() {
         if (characteristic4Value.get() > 0) {
@@ -287,11 +327,13 @@ public class CharacterStaticController {
 
     }
 
+    //updates progress bar for characteristic 4
     @FXML
     public void updateProgressBarCharacteristic4() {
         progressBarCharacteristic4.setProgress(characteristic4Value.get()/100.0);
     }
 
+    //lets user type in characteristic name
     @FXML
     public void setCharacteristic4Name() {
         if (characteristic4NameField != null) {
@@ -311,6 +353,7 @@ public class CharacterStaticController {
 
     }
 
+    //lets the user type into the number field, and save it to the property
     @FXML
     public void setCharacteristic4Value() {
         characteristic4NumberField.textProperty().bindBidirectional(characteristic4Value, new StringConverter<Number>() {
@@ -361,6 +404,8 @@ public class CharacterStaticController {
         }
     }
 
+
+    //Error message
     private void showErrorAlert(String title, String content) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setTitle(title);

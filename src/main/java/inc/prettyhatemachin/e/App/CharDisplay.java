@@ -19,23 +19,12 @@ public class CharDisplay extends Application {
     public void start(Stage stage) throws IOException {
 
         Character character;
-        //character1 = new Character("Claudius von Vengaberg",28,73,1, new ArrayList<String>() {{add("Schild"); add("Schwert");}} );
-        //character2 = new Character("Trevor Noah",75,50,30,new ArrayList<String>(){{add("Wahnsinn"); add("Crystal Meth");}});
-        //Character.saveCharacter(character1, "src/main/resources/sample.character/character1.json");
-
-        //Character.loadChar("src/main/resources/sample.character/character1.json");
-
-        //ToDo dunno ob das da wer braucht sorry
-        //Character character1 =(Character) stage.getUserData();
-
-
         try {
             FileChooser fileChooser = new FileChooser();
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("User Files", "*.json"));
             File selectedFile = fileChooser.showOpenDialog(stage);
 
             character = Character.loadChar(selectedFile.toString());
-
 
             CharDisplay help = new CharDisplay();
             Stage charstage = new Stage();
@@ -58,11 +47,6 @@ public class CharDisplay extends Application {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
-
-
-
     }
 
     public static void main(String[] args) throws IOException {
