@@ -290,7 +290,7 @@ public class CharacterStaticController {
         progressBarStrength.setProgress(characterStrength.get()/25.0);
     }
 
-    //Save Button
+    //Save Button yay
     @FXML
     public void saveFile() {
         FileChooser fileChooser = new FileChooser();
