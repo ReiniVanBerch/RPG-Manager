@@ -108,6 +108,7 @@ public class CharacterStaticController {
             //in case characteristic 4 is pre-added
             if (character.getCharacteristicName() != null) {
                 characteristic4Name.set(character.getCharacteristicName());
+                characteristic4NameField.setText(character.getCharacteristicName());
                 characteristic4NameField.setEditable(false);
             }
             if (character.getCharacteristic() != 0) {
@@ -296,6 +297,10 @@ public class CharacterStaticController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "\\build\\resources\\main\\sample.character"));
         File selectedFile = fileChooser.showSaveDialog(healthNumberField.getScene().getWindow());
+
+        character.setCharacteristicname(characteristic4Name.get());
+        character.setCharacteristic(characteristic4Value.get());
+
         Character.saveCharacter(character,selectedFile.toString());
 
     }

@@ -152,6 +152,7 @@ public class Character  {
 
     //Save Method
     public static void saveCharacter(Character object, String filename) {
+
         String jsonString = new JSONObject()
                 .put("name", object.getName())
                 .put("health", object.getHealth())
@@ -194,6 +195,8 @@ public class Character  {
             try {
                 String cm = json.getString("characteristicname");
                 int cv = json.getInt("characteristic");
+                System.out.println("debug");
+
                 loaded = new Character(json.getString("name"), json.getInt("health"),json.getInt("constitution"),json.getInt("strength"),itemlist,
                         cm, cv);
 
