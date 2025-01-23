@@ -14,6 +14,7 @@ package inc.prettyhatemachin.e.Controller;
 
 import inc.prettyhatemachin.e.CharacterDynamic.CharacterDynamic;
 import inc.prettyhatemachin.e.Exception.InvalidTypeException;
+import inc.prettyhatemachin.e.Quality.ListValue;
 import inc.prettyhatemachin.e.Quality.Quality;
 import inc.prettyhatemachin.e.Quality.FixedValue;
 
@@ -146,20 +147,20 @@ public class CharacterDynamicController {
         String[] valuesString = valuesAsString.split(";");
         ArrayList<Object> values = new ArrayList<>();
 
-        if(this.currentQuality.getValues().size() == valuesString.length){
+        for(int i = 0; i < valuesString.length; i++){
 
-            for(int i = 0; i < valuesString.length; i++){
+            System.out.println("Trying: " + i + " -> " + dt.getSimpleName());
+            String valueString = valuesString[i];
 
-                System.out.println("Trying: " + i + " -> " + dt.getSimpleName());
-                String valueString = valuesString[i];
+            Object obj = dataTypeChecker(dt, valueString);
 
-                Object obj = dataTypeChecker(dt, valueString);
-
-                if(obj != null){
-                    values.add(obj);
-                }
-
+            if(obj != null){
+                values.add(obj);
             }
+
+        }
+
+        if(this.currentQuality.getValues().size() == valuesString.length || this.currentQuality.getClass().equals(ListValue.class)){
 
 
             try {
