@@ -246,6 +246,7 @@ public class MainController {
                 a.setTitle("ERROR");
                 a.setContentText("Your JSON seems faulty.");
                 a.show();
+                //asdfasdf
             }
 
         }
